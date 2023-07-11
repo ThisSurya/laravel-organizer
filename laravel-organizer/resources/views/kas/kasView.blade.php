@@ -3,7 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Kas') }}
         </h2>
-        <a href="{{ route('kas.create', ['jenis' => 'pendapatan']) }}"> Catat Pemasukan </a> |
+        <a href="{{ route('kas.create', ['jenis' => 'pendapatan']) }}"> Catat Pendapatan </a> |
         <a href="{{ route('kas.create', ['jenis' => 'pengeluaran']) }}"> Catat Pengeluaran </a>
     </x-slot>
 
