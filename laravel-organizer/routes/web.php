@@ -3,6 +3,7 @@
 use App\Http\Controllers\PostingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProkerController;
+use App\Http\Controllers\KasController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// Proker
+
 Route::get('/prokerview', [ProkerController::class, 'index'])->middleware(['auth', 'verified'])->name('prokerview');
 
 Route::middleware(('auth'))->group(function(){
@@ -42,6 +45,16 @@ Route::middleware('auth')->group(function () {
     Route::delete('/postingan/delete', [PostingController::class, 'delete'])->name('posting.delete');
     Route::post('/postingan/store', [PostingController::class, 'store'])->name('posting.store');
 });
+
+
+// Kas
+
+Route::get('/kas', [KasController::class, 'index'])->middleware(['auth', 'verified'])->name('kas.view');
+Route::middleware('auth')->group(function () {
+    Route::get('/kas/catat/{jenis}', [KasController::class, 'create'])->name('kas.create');
+    Route::post('/kas/store', [KasController::class, 'store'])->name('kas.store');
+});
+// Profile
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
