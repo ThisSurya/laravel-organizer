@@ -22,6 +22,8 @@ class DatabaseSeeder extends Seeder
             ProkerSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
+            KasSeeder::class,
+            CatatanKasSeeder::class,
         ]);
     }
 }
