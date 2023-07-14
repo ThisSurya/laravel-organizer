@@ -8,14 +8,15 @@ class PostingManagementServices{
    public function store($request)
    {
         $posting = Post::create([
-            'Deskripsi' => $request->Deskripsi,
+            'judul' => $request->judul,
+            'deskripsi' => $request->deskripsi,
             'proker_id' => $request->proker_id
         ]);
         return $posting;
    }
 
    public function update($request){
-        $inputs = $request->only(['deskripsi']);
+        $inputs = $request->only(['judul','deskripsi']);
         $posting = Post::where('id', $request->postingan_id)->update($inputs);
         return $posting;
 }

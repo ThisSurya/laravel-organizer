@@ -11,7 +11,8 @@ class Post extends Model
 {
     protected $table = 'post';
     protected $fillable =[
-        'Deskripsi',
+        'judul',
+        'deskripsi',
         'tag',
         'proker_id',
         'file_id',

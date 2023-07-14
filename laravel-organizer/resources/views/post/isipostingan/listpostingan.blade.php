@@ -46,7 +46,19 @@
                             </x-dropdown>
                         @endif
                     </div>
-                    <p>{{ __($postingans->deskripsi) }}</p>
+                    <p></p>
+                    <x-dropdown>
+                        <x-slot name="trigger">
+                            <button>
+                                <button>{{ __($postingans->judul) }}</button>
+                            </button>
+
+                            <x-slot name="content">
+                                <h2>penjelasan:</h2>
+                                <p>{{ __($postingans->deskripsi) }}</p>
+                            </x-slot>
+                        </x-slot>
+                    </x-dropdown>
                 </div>
             </div>
         @endforeach

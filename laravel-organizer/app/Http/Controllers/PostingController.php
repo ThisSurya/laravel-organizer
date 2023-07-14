@@ -69,13 +69,14 @@ class PostingController extends Controller
     public function store(Request $request) : RedirectResponse
     {
         $request->validate([
-            'Deskripsi' => ['required', 'max:255']
+            'deskripsi' => ['required', 'max:255'],
+            'judul' => ['required', 'string', 'max:255']
         ]);
-        
+        $myroute = '/postingan/view/'.$request->proker_id;
         try{
             $data = $this->postingManagementServices->store($request);
 
-            return redirect('/dashboard');
+            return redirect($myroute)->with($request->proker_id);
         }catch (\Exception $e) {
             echo "<br>";
             echo "<br>";
@@ -89,6 +90,7 @@ class PostingController extends Controller
     {
         $request->validate([
             'deskripsi'  => ['required', 'string', 'max:255'],
+            
         ]);
         $myroute = '/postingan/view/'.$request->proker_id;
         try{
