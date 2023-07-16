@@ -4,6 +4,7 @@
             {{ $proker->Proker_name }}
         </h2>
         <a href="{{ route('posting.addView', $proker->id) }}"> Add </a>
+        <a href="{{ route('posting.addMemberView', $proker->id) }}"> Anggota </a>
     </x-slot>
 
     <div class="py-12">
@@ -17,6 +18,10 @@
                     <div class="max-w-xl">
                         @include('post.edit.editview')
                     </div> 
+                @elseif ($option == 'addmember')
+                    <div class="max-w-xl">
+                        @include('post.Tambah.tambahmember')
+                    </div>
                 @else
                     <div class="max-w-xl">
                         @include('post.Tambah.tambahpostingan')

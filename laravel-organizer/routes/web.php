@@ -28,7 +28,6 @@ Route::get('/dashboard', function () {
 // Proker
 
 Route::get('/prokerview', [ProkerController::class, 'index'])->middleware(['auth', 'verified'])->name('prokerview');
-
 Route::middleware(('auth'))->group(function(){
     Route::post('/proker/store', [ProkerController::class, 'store'])->name('proker.store');
     Route::post('/proker/update', [ProkerController::class, 'update'])->name('proker.update');
@@ -37,13 +36,17 @@ Route::middleware(('auth'))->group(function(){
     Route::get('/proker/addView', [ProkerController::class, 'addView'])->name('proker.addView');
 });
 
+//nambah postingan sesuai proker
 Route::middleware('auth')->group(function () {
     Route::get('/postingan/addPostingan/{id?}', [PostingController::class, 'addView'])->name('posting.addView');
+    Route::get('/postingan/addMember/{id?}', [PostingController::class, 'addMemberView'])->name('posting.addMemberView');
     Route::get('/postingan/view/{id?}', [PostingController::class, 'index'])->name('postingview');
     Route::post('/postingan/update', [PostingController::class, 'update'])->name('posting.update');
     Route::post('/postingan/editView', [PostingController::class, 'editView'])->name('posting.editView');
     Route::delete('/postingan/delete', [PostingController::class, 'delete'])->name('posting.delete');
     Route::post('/postingan/store', [PostingController::class, 'store'])->name('posting.store');
+    Route::post('/postingan/storeMember', [PostingController::class, 'addMember'])->name('posting.storeMember');
+    Route::post('/postingan/kickMember', [PostingController::class, 'kickMember'])->name('posting.kickMember');
 });
 
 

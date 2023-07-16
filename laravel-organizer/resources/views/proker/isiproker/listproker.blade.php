@@ -3,7 +3,10 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{  __('List Proker kamu:') }}
         </h2>
+        @if ($userId == 1)
         <a href="{{ route('proker.addView') }}"> Add </a>
+        @endif
+        
     </header>
 
     <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">

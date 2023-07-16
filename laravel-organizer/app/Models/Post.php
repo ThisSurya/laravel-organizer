@@ -23,7 +23,7 @@ class Post extends Model
     
     use HasFactory;
 
-    public function proker() :BelongsTo
+    public function prokers() :BelongsTo
     {
         return $this->belongsTo(Proker::class);
     }
