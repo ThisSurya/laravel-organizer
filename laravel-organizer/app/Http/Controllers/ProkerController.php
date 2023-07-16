@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateProkerRequest;
 use App\Models\Proker;
+use App\Models\User;
 use App\Services\ProkerManagementServices;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class ProkerController extends Controller
@@ -18,10 +20,19 @@ class ProkerController extends Controller
 
     public function index() : View
     {
-        $proker = Proker::all();
+        $roles_user = Auth::user()->role_id;
 
+        $proker = Proker::all();
+        $sessionId = Auth::user()->id;
+        // 1 adalah role untuk ketua
+        if($roles_user != 1){
+            $result = User::findOrFail($sessionId)->prokers()->wherePivot('user_id', $sessionId)->get();  
+            $proker = $result;
+        }
+        
         $data['option'] = '';
         $data['proker'] = $proker;
+        $data['userId'] = $roles_user;
         return view('proker.prokerview', $data);
     }
 
@@ -47,13 +58,13 @@ class ProkerController extends Controller
             echo "<br>";
             echo "error".$e->getMessage();
         }
-        
     }
 
     public function update(Request $request)    :   RedirectResponse
     {
         $request->validate([
             'Proker_name' => ['required', 'string', 'max:255'],
+            'user_id' => ['required']
         ]);
 
         try{
