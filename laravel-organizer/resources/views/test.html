@@ -1,0 +1,368 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .t {
+            color: #344767;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- proker -->
+    <section
+        class="max-w-4xl p-6 mx-auto bg-white shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-3xl shadow-md">
+        <h1 class="text-xl font-bold capitalize t ">Buat Proker Baru</h1>
+        <form>
+            <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                <div>
+                    <label class="text-slate-500" for="nama">Nama Proker</label>
+                    <input id="nama" type="text" name="nama"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-xl  focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+                <div>
+                    <label class="text-slate-500" for="date">Tanggal Mulai Proker</label>
+                    <input iid="date" type="date" name="date"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-xl  focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+                <div>
+                    <label class="text-slate-500" for="passwordConfirmation">Deskripsi Proker</label>
+                    <textarea id="textarea" type="textarea" rows="5"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-xl  focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-slate-500">
+                        Image
+                    </label>
+                    <div
+                        class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                        <div class="space-y-1 text-center">
+                            <div class="flex justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision"
+                                    text-rendering="geometricPrecision" image-rendering="optimizeQuality"
+                                    fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 441 512.02" height="4rem">
+                                    <path
+                                        d="M324.87 279.77c32.01 0 61.01 13.01 82.03 34.02 21.09 21 34.1 50.05 34.1 82.1 0 32.06-13.01 61.11-34.02 82.11l-1.32 1.22c-20.92 20.29-49.41 32.8-80.79 32.8-32.06 0-61.1-13.01-82.1-34.02-21.01-21-34.02-50.05-34.02-82.11s13.01-61.1 34.02-82.1c21-21.01 50.04-34.02 82.1-34.02zM243.11 38.08v54.18c.99 12.93 5.5 23.09 13.42 29.85 8.2 7.01 20.46 10.94 36.69 11.23l37.92-.04-88.03-95.22zm91.21 120.49-41.3-.04c-22.49-.35-40.21-6.4-52.9-17.24-13.23-11.31-20.68-27.35-22.19-47.23l-.11-1.74V25.29H62.87c-10.34 0-19.75 4.23-26.55 11.03-6.8 6.8-11.03 16.21-11.03 26.55v336.49c0 10.3 4.25 19.71 11.06 26.52 6.8 6.8 16.22 11.05 26.52 11.05h119.41c2.54 8.79 5.87 17.25 9.92 25.29H62.87c-17.28 0-33.02-7.08-44.41-18.46C7.08 432.37 0 416.64 0 399.36V62.87c0-17.26 7.08-32.98 18.45-44.36C29.89 7.08 45.61 0 62.87 0h173.88c4.11 0 7.76 1.96 10.07 5l109.39 118.34c2.24 2.43 3.34 5.49 3.34 8.55l.03 119.72c-8.18-1.97-16.62-3.25-25.26-3.79v-89.25zm-229.76 54.49c-6.98 0-12.64-5.66-12.64-12.64 0-6.99 5.66-12.65 12.64-12.65h150.49c6.98 0 12.65 5.66 12.65 12.65 0 6.98-5.67 12.64-12.65 12.64H104.56zm0 72.3c-6.98 0-12.64-5.66-12.64-12.65 0-6.98 5.66-12.64 12.64-12.64h142.52c3.71 0 7.05 1.6 9.37 4.15a149.03 149.03 0 0 0-30.54 21.14H104.56zm0 72.3c-6.98 0-12.64-5.66-12.64-12.65 0-6.98 5.66-12.64 12.64-12.64h86.2c-3.82 8.05-6.95 16.51-9.29 25.29h-76.91zm277.27 25.48v22.18c0 4.32-3.66 7.97-7.98 7.97h-29.9v29.91c0 4.33-3.65 7.97-7.98 7.97h-22.18c-4.33 0-7.98-3.59-7.98-7.97v-29.91H275.9c-4.32 0-7.97-3.59-7.97-7.97v-22.18c0-4.38 3.59-7.97 7.97-7.97h29.91v-29.91c0-4.39 3.59-7.97 7.98-7.97h22.18c4.39 0 7.98 3.64 7.98 7.97v29.91h29.9c4.39 0 7.98 3.7 7.98 7.97z" />
+                                </svg>
+                            </div>
+                            <div class="flex text-sm text-gray-600">
+                                <label for="file-upload"
+                                    class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                    <span class="">Upload a file</span>
+                                    <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                                </label>
+                                <p class="pl-1 text-black">or drag and drop</p>
+                            </div>
+                            <p class="text-xs text-black">
+                                PNG, JPG, GIF up to 10MB
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-end mt-6">
+                <button
+                    class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-pink-500 rounded-md hover:bg-pink-700 focus:outline-none focus:bg-gray-600">Save</button>
+            </div>
+        </form>
+    </section>
+    <!-- end proker -->
+
+    <section class="max-w-4xl p-6 mx-auto bg-indigo-600 rounded-3xl shadow-md dark:bg-gray-800 mt-20">
+        <h1 class="text-xl font-bold text-white capitalize dark:text-white">Account settings</h1>
+        <form>
+            <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                <div>
+                    <label class="text-white dark:text-gray-200" for="username">Nominal</label>
+                    <div class="flex mt-2">
+                        <span
+                            class="inline-flex items-center px-3 rounded-l-md text-gray-700 bg-white border border-gray-400 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600">
+                            Rp
+                        </span>
+                        <input id="username" type="text"
+                            class="w-full w-full px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-r-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+
+                    </div>
+                </div>
+                <div>
+                    <label class="text-white dark:text-gray-200" for="passwordConfirmation">Tipe</label>
+                    <select
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                        <option>Pemasukan</option>
+                        <option>Pengeluaran</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-white dark:text-gray-200" for="passwordConfirmation">Date</label>
+                    <input id="date" type="date"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+                <div>
+                    <label class="text-white dark:text-gray-200" for="username">Catatan</label>
+                    <input id="username" type="text"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+            </div>
+
+            <div class="flex justify-end mt-6">
+                <button
+                    class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-pink-500 rounded-md hover:bg-pink-700 focus:outline-none focus:bg-gray-600">Save</button>
+            </div>
+        </form>
+    </section>
+    <!-- catatan kas -->
+    <section class="max-w-4xl p-6 mx-auto bg-indigo-600 rounded-3xl shadow-md dark:bg-gray-800 mt-20">
+        <h1 class="text-xl font-bold text-white capitalize dark:text-white">Account settings</h1>
+        <form>
+            <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                <div>
+                    <label class="text-white dark:text-gray-200" for="username">Username</label>
+                    <input id="username" type="text"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+
+                <div>
+                    <label class="text-white dark:text-gray-200" for="emailAddress">Email Address</label>
+                    <input id="emailAddress" type="email"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+
+                <div>
+                    <label class="text-white dark:text-gray-200" for="password">Password</label>
+                    <input id="password" type="password"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+
+                <div>
+                    <label class="text-white dark:text-gray-200" for="passwordConfirmation">Password
+                        Confirmation</label>
+                    <input id="passwordConfirmation" type="password"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+                <div>
+                    <label class="text-white dark:text-gray-200" for="passwordConfirmation">Color</label>
+                    <input id="color" type="color"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+                <div>
+                    <label class="text-white dark:text-gray-200" for="passwordConfirmation">Select</label>
+                    <select
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                        <option>Surabaya</option>
+                        <option>Jakarta</option>
+                        <option>Tangerang</option>
+                        <option>Bandung</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-white dark:text-gray-200" for="passwordConfirmation">Range</label>
+                    <input id="range" type="range"
+                        class="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+                <div>
+                    <label class="text-white dark:text-gray-200" for="passwordConfirmation">Date</label>
+                    <input id="date" type="date"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+                <div>
+                    <label class="text-white dark:text-gray-200" for="passwordConfirmation">Text Area</label>
+                    <textarea id="textarea" type="textarea"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-white">
+                        Image
+                    </label>
+                    <div
+                        class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                        <div class="space-y-1 text-center">
+                            <div class="flex justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" height="4rem" viewBox="0 0 1000 1000" xml:space="preserve">
+                                    <desc>Created with Fabric.js 3.5.0</desc>
+                                    <defs>
+                                    </defs>
+                                    <rect x="0" y="0" width="100%" height="100%" fill="rgba(255,255,255,0)" />
+                                    <g transform="matrix(1.9507 0 0 1.9507 499.9887 499.9868)" id="604654">
+                                        <path
+                                            style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; is-custom-font: none; font-file-url: none; fill: rgb(255,255,255); fill-rule: evenodd; opacity: 1;"
+                                            vector-effect="non-scaling-stroke" transform=" translate(-220.5, -256.01)"
+                                            d="M 324.87 279.77 c 32.01 0 61.01 13.01 82.03 34.02 c 21.09 21 34.1 50.05 34.1 82.1 c 0 32.06 -13.01 61.11 -34.02 82.11 l -1.32 1.22 c -20.92 20.29 -49.41 32.8 -80.79 32.8 c -32.06 0 -61.1 -13.01 -82.1 -34.02 c -21.01 -21 -34.02 -50.05 -34.02 -82.11 s 13.01 -61.1 34.02 -82.1 c 21 -21.01 50.04 -34.02 82.1 -34.02 z M 243.11 38.08 v 54.18 c 0.99 12.93 5.5 23.09 13.42 29.85 c 8.2 7.01 20.46 10.94 36.69 11.23 l 37.92 -0.04 l -88.03 -95.22 z m 91.21 120.49 l -41.3 -0.04 c -22.49 -0.35 -40.21 -6.4 -52.9 -17.24 c -13.23 -11.31 -20.68 -27.35 -22.19 -47.23 l -0.11 -1.74 V 25.29 H 62.87 c -10.34 0 -19.75 4.23 -26.55 11.03 c -6.8 6.8 -11.03 16.21 -11.03 26.55 v 336.49 c 0 10.3 4.25 19.71 11.06 26.52 c 6.8 6.8 16.22 11.05 26.52 11.05 h 119.41 c 2.54 8.79 5.87 17.25 9.92 25.29 H 62.87 c -17.28 0 -33.02 -7.08 -44.41 -18.46 C 7.08 432.37 0 416.64 0 399.36 V 62.87 c 0 -17.26 7.08 -32.98 18.45 -44.36 C 29.89 7.08 45.61 0 62.87 0 h 173.88 c 4.11 0 7.76 1.96 10.07 5 l 109.39 118.34 c 2.24 2.43 3.34 5.49 3.34 8.55 l 0.03 119.72 c -8.18 -1.97 -16.62 -3.25 -25.26 -3.79 v -89.25 z m -229.76 54.49 c -6.98 0 -12.64 -5.66 -12.64 -12.64 c 0 -6.99 5.66 -12.65 12.64 -12.65 h 150.49 c 6.98 0 12.65 5.66 12.65 12.65 c 0 6.98 -5.67 12.64 -12.65 12.64 H 104.56 z m 0 72.3 c -6.98 0 -12.64 -5.66 -12.64 -12.65 c 0 -6.98 5.66 -12.64 12.64 -12.64 h 142.52 c 3.71 0 7.05 1.6 9.37 4.15 a 149.03 149.03 0 0 0 -30.54 21.14 H 104.56 z m 0 72.3 c -6.98 0 -12.64 -5.66 -12.64 -12.65 c 0 -6.98 5.66 -12.64 12.64 -12.64 h 86.2 c -3.82 8.05 -6.95 16.51 -9.29 25.29 h -76.91 z m 277.27 25.48 v 22.18 c 0 4.32 -3.66 7.97 -7.98 7.97 h -29.9 v 29.91 c 0 4.33 -3.65 7.97 -7.98 7.97 h -22.18 c -4.33 0 -7.98 -3.59 -7.98 -7.97 v -29.91 H 275.9 c -4.32 0 -7.97 -3.59 -7.97 -7.97 v -22.18 c 0 -4.38 3.59 -7.97 7.97 -7.97 h 29.91 v -29.91 c 0 -4.39 3.59 -7.97 7.98 -7.97 h 22.18 c 4.39 0 7.98 3.64 7.98 7.97 v 29.91 h 29.9 c 4.39 0 7.98 3.7 7.98 7.97 z"
+                                            stroke-linecap="round" />
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="flex text-sm text-gray-600">
+                                <label for="file-upload"
+                                    class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                    <span class="">Upload a file</span>
+                                    <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                                </label>
+                                <p class="pl-1 text-white">or drag and drop</p>
+                            </div>
+                            <p class="text-xs text-white">
+                                PNG, JPG, GIF up to 10MB
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end mt-6">
+                <button
+                    class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-pink-500 rounded-md hover:bg-pink-700 focus:outline-none focus:bg-gray-600">Save</button>
+            </div>
+        </form>
+    </section>
+    <!-- end catatan kas -->
+
+    <!-- component -->
+    <section class="max-w-4xl p-6 mx-auto bg-indigo-600 rounded-3xl shadow-md dark:bg-gray-800 mt-20">
+        <h1 class="text-xl font-bold text-white capitalize dark:text-white">Account settings</h1>
+        <form>
+            <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                <div>
+                    <label class="text-white dark:text-gray-200" for="username">Username</label>
+                    <input id="username" type="text"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+
+                <div>
+                    <label class="text-white dark:text-gray-200" for="emailAddress">Email Address</label>
+                    <input id="emailAddress" type="email"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+
+                <div>
+                    <label class="text-white dark:text-gray-200" for="password">Password</label>
+                    <input id="password" type="password"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+
+                <div>
+                    <label class="text-white dark:text-gray-200" for="passwordConfirmation">Password
+                        Confirmation</label>
+                    <input id="passwordConfirmation" type="password"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+                <div>
+                    <label class="text-white dark:text-gray-200" for="passwordConfirmation">Color</label>
+                    <input id="color" type="color"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+                <div>
+                    <label class="text-white dark:text-gray-200" for="passwordConfirmation">Select</label>
+                    <select
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                        <option>Surabaya</option>
+                        <option>Jakarta</option>
+                        <option>Tangerang</option>
+                        <option>Bandung</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="text-white dark:text-gray-200" for="passwordConfirmation">Range</label>
+                    <input id="range" type="range"
+                        class="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+                <div>
+                    <label class="text-white dark:text-gray-200" for="passwordConfirmation">Date</label>
+                    <input id="date" type="date"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+                <div>
+                    <label class="text-white dark:text-gray-200" for="passwordConfirmation">Text Area</label>
+                    <textarea id="textarea" type="textarea"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"></textarea>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-white">
+                        Image
+                    </label>
+                    <div
+                        class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                        <div class="space-y-1 text-center">
+                            <div class="flex justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    version="1.1" height="4rem" viewBox="0 0 1000 1000" xml:space="preserve">
+                                    <desc>Created with Fabric.js 3.5.0</desc>
+                                    <defs>
+                                    </defs>
+                                    <rect x="0" y="0" width="100%" height="100%" fill="rgba(255,255,255,0)" />
+                                    <g transform="matrix(1.9507 0 0 1.9507 499.9887 499.9868)" id="604654">
+                                        <path
+                                            style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; is-custom-font: none; font-file-url: none; fill: rgb(255,255,255); fill-rule: evenodd; opacity: 1;"
+                                            vector-effect="non-scaling-stroke" transform=" translate(-220.5, -256.01)"
+                                            d="M 324.87 279.77 c 32.01 0 61.01 13.01 82.03 34.02 c 21.09 21 34.1 50.05 34.1 82.1 c 0 32.06 -13.01 61.11 -34.02 82.11 l -1.32 1.22 c -20.92 20.29 -49.41 32.8 -80.79 32.8 c -32.06 0 -61.1 -13.01 -82.1 -34.02 c -21.01 -21 -34.02 -50.05 -34.02 -82.11 s 13.01 -61.1 34.02 -82.1 c 21 -21.01 50.04 -34.02 82.1 -34.02 z M 243.11 38.08 v 54.18 c 0.99 12.93 5.5 23.09 13.42 29.85 c 8.2 7.01 20.46 10.94 36.69 11.23 l 37.92 -0.04 l -88.03 -95.22 z m 91.21 120.49 l -41.3 -0.04 c -22.49 -0.35 -40.21 -6.4 -52.9 -17.24 c -13.23 -11.31 -20.68 -27.35 -22.19 -47.23 l -0.11 -1.74 V 25.29 H 62.87 c -10.34 0 -19.75 4.23 -26.55 11.03 c -6.8 6.8 -11.03 16.21 -11.03 26.55 v 336.49 c 0 10.3 4.25 19.71 11.06 26.52 c 6.8 6.8 16.22 11.05 26.52 11.05 h 119.41 c 2.54 8.79 5.87 17.25 9.92 25.29 H 62.87 c -17.28 0 -33.02 -7.08 -44.41 -18.46 C 7.08 432.37 0 416.64 0 399.36 V 62.87 c 0 -17.26 7.08 -32.98 18.45 -44.36 C 29.89 7.08 45.61 0 62.87 0 h 173.88 c 4.11 0 7.76 1.96 10.07 5 l 109.39 118.34 c 2.24 2.43 3.34 5.49 3.34 8.55 l 0.03 119.72 c -8.18 -1.97 -16.62 -3.25 -25.26 -3.79 v -89.25 z m -229.76 54.49 c -6.98 0 -12.64 -5.66 -12.64 -12.64 c 0 -6.99 5.66 -12.65 12.64 -12.65 h 150.49 c 6.98 0 12.65 5.66 12.65 12.65 c 0 6.98 -5.67 12.64 -12.65 12.64 H 104.56 z m 0 72.3 c -6.98 0 -12.64 -5.66 -12.64 -12.65 c 0 -6.98 5.66 -12.64 12.64 -12.64 h 142.52 c 3.71 0 7.05 1.6 9.37 4.15 a 149.03 149.03 0 0 0 -30.54 21.14 H 104.56 z m 0 72.3 c -6.98 0 -12.64 -5.66 -12.64 -12.65 c 0 -6.98 5.66 -12.64 12.64 -12.64 h 86.2 c -3.82 8.05 -6.95 16.51 -9.29 25.29 h -76.91 z m 277.27 25.48 v 22.18 c 0 4.32 -3.66 7.97 -7.98 7.97 h -29.9 v 29.91 c 0 4.33 -3.65 7.97 -7.98 7.97 h -22.18 c -4.33 0 -7.98 -3.59 -7.98 -7.97 v -29.91 H 275.9 c -4.32 0 -7.97 -3.59 -7.97 -7.97 v -22.18 c 0 -4.38 3.59 -7.97 7.97 -7.97 h 29.91 v -29.91 c 0 -4.39 3.59 -7.97 7.98 -7.97 h 22.18 c 4.39 0 7.98 3.64 7.98 7.97 v 29.91 h 29.9 c 4.39 0 7.98 3.7 7.98 7.97 z"
+                                            stroke-linecap="round" />
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="flex text-sm text-gray-600">
+                                <label for="file-upload"
+                                    class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                    <span class="">Upload a file</span>
+                                    <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                                </label>
+                                <p class="pl-1 text-white">or drag and drop</p>
+                            </div>
+                            <p class="text-xs text-white">
+                                PNG, JPG, GIF up to 10MB
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end mt-6">
+                <button
+                    class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-pink-500 rounded-md hover:bg-pink-700 focus:outline-none focus:bg-gray-600">Save</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800 mt-20">
+        <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Account settings</h2>
+
+        <form>
+            <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                <div>
+                    <label class="text-gray-700 dark:text-gray-200" for="username">Username</label>
+                    <input id="username" type="text"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+
+                <div>
+                    <label class="text-gray-700 dark:text-gray-200" for="emailAddress">Email Address</label>
+                    <input id="emailAddress" type="email"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+
+                <div>
+                    <label class="text-gray-700 dark:text-gray-200" for="password">Password</label>
+                    <input id="password" type="password"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+
+                <div>
+                    <label class="text-gray-700 dark:text-gray-200" for="passwordConfirmation">Password
+                        Confirmation</label>
+                    <input id="passwordConfirmation" type="password"
+                        class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
+                </div>
+            </div>
+
+            <div class="flex justify-end mt-6">
+                <button
+                    class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Save</button>
+            </div>
+        </form>
+    </section>
+</body>
+
+</html>
