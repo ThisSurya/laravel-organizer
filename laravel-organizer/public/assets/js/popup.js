@@ -7,3 +7,4 @@ function pler() {
         prokerPop.classList.remove("hidden", "overflow-hidden");
         prokerPop.classList.add("block");
     }
+}
