@@ -11,21 +11,21 @@
     <div class="py-12">
         <div class="max-w-7xl">
             <div class="p-4">
-                @if ($option == '')
+                @if ($option == 'tambah')
                     <div class="max-w-xl">
-                        @include('post.isipostingan.listpostingan')
+                        @include('post.Tambah.tambahpostingan')
                     </div>     
-                @elseif ($option == 'edit')
+                    @elseif ($option == 'edit')
                     <div class="max-w-xl">
                         @include('post.edit.editview')
                     </div> 
-                @elseif ($option == 'addmember')
+                    @elseif ($option == 'addmember')
                     <div class="max-w-xl">
                         @include('post.Tambah.tambahmember')
                     </div>
-                @else
+                    @else
                     <div class="max-w-xl">
-                        @include('post.Tambah.tambahpostingan')
+                        @include('post.isipostingan.listpostingan')
                     </div> 
                 @endif
                 

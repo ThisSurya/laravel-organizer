@@ -10,7 +10,8 @@ class PostingManagementServices{
         $posting = Post::create([
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'proker_id' => $request->proker_id
+            'proker_id' => $request->proker_id,
+            'user_id' => $request->user_id
         ]);
         return $posting;
    }

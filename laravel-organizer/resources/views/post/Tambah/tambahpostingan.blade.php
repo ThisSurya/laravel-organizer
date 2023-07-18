@@ -7,6 +7,7 @@
         <form action="{{ route('posting.store') }}" method="POST">
             @csrf
             <x-text-input type="hidden" name="proker_id" value="{{ $proker->id }}"></x-text-input>
+            <x-text-input type="hidden" name="user_id" value="{{ $user }}"></x-text-input>
             {{-- judul program kerja --}}
             <div>
                 <x-input-label for="judul" :value="__('Judul')"></x-input-label>

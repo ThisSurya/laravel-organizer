@@ -49,14 +49,17 @@ class PostingController extends Controller
         $proker = Proker::all();
         $Proker  = $proker->find($id);
         $roles_user = Auth::user()->role_id;
+        $session_user = Auth::user()->id;
+
         if($Proker->status != trim('berjalan')){
             return view('prokertidakberjalan');
         }
 
         $data = [
-            'option' => '',
+            'option' => 'tambah',
             'proker' => $Proker,
             'roles_user' => $roles_user,
+            'user' => $session_user,
         ];
         
         return view('post.postingview', $data);
@@ -85,7 +88,7 @@ class PostingController extends Controller
     public function store(Request $request) : RedirectResponse
     {
         $request->validate([
-            'deskripsi' => ['required', 'max:255'],
+            'deskripsi' => ['required', 'max:255', 'string'],
             'judul' => ['required', 'string', 'max:255']
         ]);
 
@@ -176,18 +179,6 @@ class PostingController extends Controller
 
     public function addMember(Request $request) : RedirectResponse
     {
-        // $proker = Proker::findOrFail($request->proker_id)->users()->wherePivot('user_id', $request->user_id)->first();
-        // if($proker){
-        //     $request->validate([
-        //         'user_id' => ['required']
-        //     ]);
-    
-        //     return redirect('/');
-        // }else{
-        //     $proker = Proker::findOrFail($request->proker_id);
-        //     $proker->users()->attach($request->user_id);
-        //     return redirect('/');
-        // }
             $request->validate([
                 'user_id' => ['required']
             ]);
