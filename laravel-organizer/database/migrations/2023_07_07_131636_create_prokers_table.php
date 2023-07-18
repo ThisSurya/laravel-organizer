@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('prokers', function (Blueprint $table) {
             $table->id();
             $table->string('Proker_name');
+            $table->string('deskripsi')->nullable();
             $table->string('status');
         });
     }

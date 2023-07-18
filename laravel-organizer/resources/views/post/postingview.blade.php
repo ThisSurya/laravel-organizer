@@ -3,8 +3,9 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ $proker->Proker_name }}
         </h2>
-        <a href="{{ route('posting.addView', $proker->id) }}"> Add </a>
-        <a href="{{ route('posting.addMemberView', $proker->id) }}"> Anggota </a>
+        <div class="" style="text-align: right;">    
+        </div>
+        
     </x-slot>
 
     <div class="py-12">
@@ -31,4 +32,9 @@
             </div>
         </div>
     </div>
+    
 </x-app-layout>
+
+<script>
+    
+</script>

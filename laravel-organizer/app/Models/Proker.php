@@ -14,6 +14,7 @@ class Proker extends Model
     public $timestamps = false;
     protected $fillable = [
         'Proker_name',
+        'deskripsi',
         'status',
     ];
 

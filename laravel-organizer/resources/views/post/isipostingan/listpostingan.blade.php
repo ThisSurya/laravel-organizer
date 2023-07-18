@@ -5,6 +5,16 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             List postingan
         </h2>
+        <x-dropdown>
+            <x-slot name="trigger">
+                <button>Tambah</button>
+            </x-slot>
+            <x-slot name="content">
+                <a href="{{ route('posting.addView', $proker->id) }}" style="width: 50%;"> Add </a>
+                <br>
+                <a href="{{ route('posting.addMemberView', $proker->id) }}"> Anggota </a>
+            </x-slot>
+        </x-dropdown>
     </header>
 
     <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">

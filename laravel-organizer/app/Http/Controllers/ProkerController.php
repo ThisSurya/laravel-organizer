@@ -23,6 +23,9 @@ class ProkerController extends Controller
         $roles_user = Auth::user()->role_id;
 
         $proker = Proker::all();
+
+        $find = $proker->where('status', 'berjalan');
+
         $sessionId = Auth::user()->id;
         // 1 adalah role untuk ketua
         if($roles_user != 1){
@@ -31,7 +34,7 @@ class ProkerController extends Controller
         }
         
         $data['option'] = '';
-        $data['proker'] = $proker;
+        $data['proker'] = $find;
         $data['userId'] = $roles_user;
         return view('proker.prokerview', $data);
     }
@@ -46,6 +49,7 @@ class ProkerController extends Controller
     {
         $request->validate([
             'Proker_name' => ['required', 'string', 'max:255'],
+            'deskripsi' => ['string', 'max:255'],
         ]);
         try{
             $data = $this->prokerManagementServices->store($request);
@@ -64,6 +68,7 @@ class ProkerController extends Controller
     {
         $request->validate([
             'Proker_name' => ['required', 'string', 'max:255'],
+            'deskripsi' => ['required', 'string', 'max:255'],
             'user_id' => ['required']
         ]);
 

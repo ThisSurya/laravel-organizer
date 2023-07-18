@@ -15,7 +15,7 @@ class KasSeeder extends Seeder
     {
         //
         Kas::create([
-            'jumlah' => 60000,
+            'jumlah' => 0,
         ]);
     }
 }

@@ -12,8 +12,10 @@
         <div>
             <x-input-label for="program_kerja" :value="__('Judul')"></x-input-label>
             <x-text-input type="text" class="block mt-1 w-full" name="Proker_name"/>
+            <x-input-label for="program_kerja" :value="__('Deskripsi')"></x-input-label>
+            <x-text-input type="text" class="block mt-1 w-full" name="deskripsi"/>
             <x-primary-button class="ml-4">
-                {{ __('Register') }}
+                {{ __('Tambah') }}
             </x-primary-button>
         </div>
     </form>
