@@ -33,7 +33,8 @@ class PostingController extends Controller
             return view('prokertidakberjalan');
         }
 
-        $postingans = DB::table('post')->where('proker_id', $id)->get();
+        $postingans = DB::table('post')->select('*', 'users.email')->where('proker_id', $id)->join('users', 'user_id', '=', 'users.id')
+        ->get();
 
         $data = [
             'option' => '',

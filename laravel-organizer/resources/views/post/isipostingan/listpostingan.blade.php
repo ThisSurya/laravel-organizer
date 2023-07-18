@@ -23,7 +23,7 @@
                 <div class="flex-1">
                     <div class="flex justify-between items-center">
                         <div>
-                            <small class="ml-2 text-sm text-gray-600">{{ $postingans->created_at }}</small>
+                            <small class="ml-2 text-sm text-gray-600">{{ $postingans->email }}</small>
                         </div>
                         @if ($postingans->deskripsi)
                             <x-dropdown>
