@@ -33,7 +33,7 @@ class PostingController extends Controller
             return view('prokertidakberjalan');
         }
 
-        $postingans = DB::table('post')->select('*', 'users.email')->where('proker_id', $id)->join('users', 'user_id', '=', 'users.id')
+        $postingans = DB::table('post')->select('*','post.id', 'users.email')->where('proker_id', $id)->join('users', 'user_id', '=', 'users.id')
         ->get();
 
         $data = [
@@ -187,6 +187,22 @@ class PostingController extends Controller
         try{
             $result = $this->memberManagementServices->store($request);
         }catch(\Exception $e){
+            echo "<br>";
+            echo "<br>";
+            echo "<br>";
+            echo "<br>";
+            echo "error".$e->getMessage();
+        }
+        return redirect($myroute)->with($request->proker_id);
+    }
+
+    public function done(Request $request)
+    {
+        // change status into selesai
+        $myroute = '/postingan/view/'.$request->proker_id;
+        try{
+            $result = $this->postingManagementServices->updateStatus($request);
+        }catch(Exception $e){
             echo "<br>";
             echo "<br>";
             echo "<br>";

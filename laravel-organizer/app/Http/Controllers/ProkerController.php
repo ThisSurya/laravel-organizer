@@ -24,7 +24,7 @@ class ProkerController extends Controller
 
         $proker = Proker::all();
 
-        $find = $proker->where('status', 'berjalan');
+        $find = $proker;
 
         $sessionId = Auth::user()->id;
         // 1 adalah role untuk ketua
@@ -99,6 +99,21 @@ class ProkerController extends Controller
         try{
             $data = $this->prokerManagementServices->delete($id);
         }catch (\Exception $e) {
+            echo "<br>";
+            echo "<br>";
+            echo "<br>";
+            echo "<br>";
+            echo "error".$e->getMessage();
+        }
+        return redirect('prokerview');
+    }
+
+    public function done(Request $request) : RedirectResponse
+    {
+        // change status into selesai
+        try{
+            $result = $this->prokerManagementServices->updateStatus($request);
+        }catch(Exception $e){
             echo "<br>";
             echo "<br>";
             echo "<br>";

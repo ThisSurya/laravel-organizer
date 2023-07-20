@@ -26,4 +26,9 @@ class ProkerManagementServices{
         $proker = Proker::where('id',$request)->delete();
         return $proker;
     }
+
+    public function updateStatus($request){
+        $proker = Proker::where('id', $request->id)->update(['status' => $request->status_done]);
+        return $proker;
+    }
 }

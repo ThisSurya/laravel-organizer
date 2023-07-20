@@ -34,6 +34,7 @@ Route::middleware(('auth'))->group(function(){
     Route::post('/proker/editView/{id?}', [ProkerController::class, 'editView'])->name('proker.editView');
     Route::delete('/proker/delete/{id?}', [ProkerController::class, 'delete'])->name('proker.delete');
     Route::get('/proker/addView', [ProkerController::class, 'addView'])->name('proker.addView');
+    Route::post('/proker/done/{id?}', [ProkerController::class, 'done'])->name('proker.done');
 });
 
 //nambah postingan sesuai proker
@@ -47,6 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/postingan/store', [PostingController::class, 'store'])->name('posting.store');
     Route::post('/postingan/storeMember', [PostingController::class, 'addMember'])->name('posting.storeMember');
     Route::post('/postingan/kickMember', [PostingController::class, 'kickMember'])->name('posting.kickMember');
+    Route::post('/postingan/done', [PostingController::class, 'done'])->name('post.done');
 });
 
 

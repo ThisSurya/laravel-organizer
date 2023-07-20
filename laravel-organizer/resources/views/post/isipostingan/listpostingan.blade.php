@@ -19,6 +19,7 @@
 
     <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
         @foreach ($postingan as $postingans)
+        @if ($postingans->status == 'berjalan')
             <div class="p-6 flex space-x-2 ">  
                 <div class="flex-1">
                     <div class="flex justify-between items-center">
@@ -26,34 +27,46 @@
                             <small class="ml-2 text-sm text-gray-600">{{ $postingans->email }}</small>
                         </div>
                         @if ($postingans->deskripsi)
-                            <x-dropdown>
-                                <x-slot name="trigger">
-                                    <button>
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                                            <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
-                                        </svg>
-                                    </button>
-                                </x-slot>
-                                <x-slot name="content">
-                                    <form method="POST" action="{{ route('posting.editView') }}">
-                                        <x-text-input type="hidden" value="{{ $postingans->id }}" name="posting_id"></x-text-input>
-                                        <x-text-input type="hidden" value="{{ $proker->id }}" name="proker_id"></x-text-input>
-                                        {{ csrf_field() }}
-                                        <x-dropdown-link onclick="event.preventDefault(); this.closest('form').submit();">
-                                            {{ __('Edit') }}
-                                        </x-dropdown-link>  
-                                    </form>
-                                    <form method="POST" action="{{ route('posting.delete') }}">
-                                        <x-text-input type="hidden" value="{{ $postingans->id }}" name="posting_id"></x-text-input>
-                                        <x-text-input type="hidden" value="{{ $proker->id }}" name="proker_id"></x-text-input>
-                                        {{ csrf_field() }}
-                                        @method('delete')
-                                        <x-dropdown-link onclick="event.preventDefault(); this.closest('form').submit();">
-                                            {{ __('Delete') }}
-                                        </x-dropdown-link>
-                                    </form>
-                                </x-slot>
-                            </x-dropdown>
+                            @if ($postingans->user_id == Auth::user()->id)
+                                <x-dropdown>
+                                    <x-slot name="trigger">
+                                        <button>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                            </svg>
+                                        </button>
+                                    </x-slot>
+
+                                    <x-slot name="content">
+                                        <form method="POST" action="{{ route('posting.editView') }}">
+                                            <x-text-input type="hidden" value="{{ $postingans->id }}" name="posting_id"></x-text-input>
+                                            <x-text-input type="hidden" value="{{ $proker->id }}" name="proker_id"></x-text-input>
+                                            {{ csrf_field() }}
+                                            <x-dropdown-link onclick="event.preventDefault(); this.closest('form').submit();">
+                                                {{ __('Edit') }}
+                                            </x-dropdown-link>  
+                                        </form>
+                                        <form method="POST" action="{{ route('posting.delete') }}">
+                                            <x-text-input type="hidden" value="{{ $postingans->id }}" name="posting_id"></x-text-input>
+                                            <x-text-input type="hidden" value="{{ $proker->id }}" name="proker_id"></x-text-input>
+                                            {{ csrf_field() }}
+                                            @method('delete')
+                                            <x-dropdown-link onclick="event.preventDefault(); this.closest('form').submit();">
+                                                {{ __('Delete') }}
+                                            </x-dropdown-link>
+                                        </form>
+                                        <form method="POST" action="{{ route('post.done', $postingans->id) }}">
+                                            <x-text-input type="hidden" value="{{ $postingans->id }}" name="posting_id"></x-text-input>
+                                            <x-text-input type="hidden" value="{{ $proker->id }}" name="proker_id"></x-text-input>
+                                            <x-text-input type="hidden" value="{{ 'sudah dikerjakan' }}" name="status_done"></x-text-input>
+                                            {{ csrf_field() }}
+                                            <x-dropdown-link onclick="event.preventDefault(); this.closest('form').submit();">
+                                                {{ __('Done') }}
+                                            </x-dropdown-link>
+                                        </form>
+                                    </x-slot>
+                                </x-dropdown>
+                            @endif
                         @endif
                     </div>
                     <p></p>
@@ -71,6 +84,68 @@
                     </x-dropdown>
                 </div>
             </div>
+        @endif
+
+            @endforeach
+    </div>
+
+    </section>
+
+
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        List postingan yang sudah dikerjakan
+    </h2>
+
+    <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
+        @foreach ($postingan as $postingans)
+        @if ($postingans->status == 'sudah dikerjakan')
+            <div class="p-6 flex space-x-2 ">  
+                <div class="flex-1">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <small class="ml-2 text-sm text-gray-600">{{ $postingans->email }}</small>
+                        </div>
+                        @if ($postingans->deskripsi)
+                            @if ($postingans->user_id == Auth::user()->id)
+                                <x-dropdown>
+                                    <x-slot name="trigger">
+                                        <button>
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" />
+                                            </svg>
+                                        </button>
+                                    </x-slot>
+
+                                    <x-slot name="content">
+                                        <form method="POST" action="{{ route('posting.delete') }}">
+                                            <x-text-input type="hidden" value="{{ $postingans->id }}" name="posting_id"></x-text-input>
+                                            <x-text-input type="hidden" value="{{ $proker->id }}" name="proker_id"></x-text-input>
+                                            {{ csrf_field() }}
+                                            @method('delete')
+                                            <x-dropdown-link onclick="event.preventDefault(); this.closest('form').submit();">
+                                                {{ __('Delete') }}
+                                            </x-dropdown-link>
+                                        </form>
+                                    </x-slot>
+                                </x-dropdown>
+                            @endif
+                        @endif
+                    </div>
+                    <p></p>
+                    <x-dropdown>
+                        <x-slot name="trigger">
+                            <button>
+                                <button>{{ __($postingans->judul) }}</button>
+                            </button>
+
+                            <x-slot name="content">
+                                <h2>penjelasan:</h2>
+                                <p>{{ __($postingans->deskripsi) }}</p>
+                            </x-slot>
+                        </x-slot>
+                    </x-dropdown>
+                </div>
+            </div>
+        @endif
         @endforeach
     </div>
-</section>
