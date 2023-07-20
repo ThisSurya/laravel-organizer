@@ -28,7 +28,6 @@ class PostingController extends Controller
         $proker = Proker::all();
         $Proker  = $proker->find($id);
         
-        
         if($Proker->status != trim('berjalan')){
             return view('prokertidakberjalan');
         }
@@ -40,6 +39,8 @@ class PostingController extends Controller
             'option' => '',
             'proker' => $Proker,
             'postingan' => $postingans,
+            'user' => $sessionId,
+            'roles' => $roles_user
         ];
 
         return view('post.postingview', $data);

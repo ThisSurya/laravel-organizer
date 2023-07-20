@@ -34,8 +34,8 @@ class ProkerController extends Controller
         }
         
         $data['option'] = '';
-        $data['proker'] = $find;
-        $data['userId'] = $roles_user;
+        $data['proker'] = $proker;
+        $data['userRole'] = $roles_user;
         return view('proker.prokerview', $data);
     }
 
@@ -68,8 +68,8 @@ class ProkerController extends Controller
     {
         $request->validate([
             'Proker_name' => ['required', 'string', 'max:255'],
-            'deskripsi' => ['required', 'string', 'max:255'],
-            'user_id' => ['required']
+            'deskripsi' => ['max:255'],
+            'id' => ['required']
         ]);
 
         try{
@@ -88,7 +88,7 @@ class ProkerController extends Controller
     public function editView($id) : View
     {
         $proker = Proker::all();
-        $data['profile'] = $proker->find($id);
+        $data['proker'] = $proker->find($id);
         $data['option'] = 'edit';
 
         return view('proker.prokerview', $data);

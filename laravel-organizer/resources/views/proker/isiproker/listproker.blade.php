@@ -3,7 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{  __('List Proker kamu:') }}
         </h2>
-        @if ($userId == 1)
+        @if ($userRole == 1)
         <a href="{{ route('proker.addView') }}"> Add </a>
         @endif
         
@@ -19,6 +19,7 @@
                             <small class="ml-2 text-sm text-gray-600">{{ $prokers->status }}</small>
                         </div>
                         @if ($prokers->Proker_name)
+                            @if ($userRole == 1)
                             <x-dropdown>
                                 <x-slot name="trigger">
                                     <button>
@@ -28,8 +29,7 @@
                                     </button>
                                 </x-slot>
                                 <x-slot name="content">
-                                    <form method="POST" action="{{ route('proker.editView', $prokers->id) }}">
-                                        {{ csrf_field() }}
+                                    <form action="{{ route('proker.editView', $prokers->id) }}" method="GET">
                                         <x-dropdown-link onclick="event.preventDefault(); this.closest('form').submit();">
                                             {{ __('Edit') }}
                                         </x-dropdown-link>  
@@ -50,6 +50,7 @@
                                     </form>
                                 </x-slot>
                             </x-dropdown>
+                            @endif
                         @endif
                     </div>
                     <form action="{{ route('postingview', $prokers->id) }}" method="GET">

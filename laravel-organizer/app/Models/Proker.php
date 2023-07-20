@@ -30,6 +30,11 @@ class Proker extends Model
         return $this->hasMany(Post::class);
     }
 
+    public function file() : HasMany
+    {
+        return $this->hasMany(File::class);
+    }
+
     public function isLeaderofGroup($groupid){
         return $this->User()->where('is_leader', true)->exists();
     }

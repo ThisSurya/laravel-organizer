@@ -12,8 +12,11 @@
         <div>
             <x-input-label for="program_kerja" :value="__('Judul')"></x-input-label>
             <x-text-input type="text" class="block mt-1 w-full" name="Proker_name"/>
+            <x-input-error :messages="$errors->get('Proker_name')" class="mt-2" />
+
             <x-input-label for="program_kerja" :value="__('Deskripsi')"></x-input-label>
             <x-text-input type="text" class="block mt-1 w-full" name="deskripsi"/>
+            <x-input-error :messages="$errors->get('deskripsi')" class="mt-2" />
             <x-primary-button class="ml-4">
                 {{ __('Tambah') }}
             </x-primary-button>
