@@ -23,7 +23,8 @@
                 <div class="flex-1">
                     <div class="flex justify-between items-center">
                         <div>
-                            <small class="ml-2 text-sm text-gray-600">{{ $postingans->email }}</small>
+                            <small class="ml-2 text-sm text-gray-600">{{ $postingans->name }}</small>
+                            <small class="ml-2 text-sm text-gray-600">{{ $postingans->name }}</small>
                         </div>
                         @if ($postingans->deskripsi)
                             <x-dropdown>
@@ -35,10 +36,9 @@
                                     </button>
                                 </x-slot>
                                 <x-slot name="content">
-                                    <form method="POST" action="{{ route('posting.editView') }}">
+                                    <form method="get" action="{{ route('posting.editView', $postingans->id) }}">
                                         <x-text-input type="hidden" value="{{ $postingans->id }}" name="posting_id"></x-text-input>
                                         <x-text-input type="hidden" value="{{ $proker->id }}" name="proker_id"></x-text-input>
-                                        {{ csrf_field() }}
                                         <x-dropdown-link onclick="event.preventDefault(); this.closest('form').submit();">
                                             {{ __('Edit') }}
                                         </x-dropdown-link>  
@@ -51,7 +51,7 @@
                                         <x-dropdown-link onclick="event.preventDefault(); this.closest('form').submit();">
                                             {{ __('Delete') }}
                                         </x-dropdown-link>
-                                    </form>
+                                    </form>               
                                 </x-slot>
                             </x-dropdown>
                         @endif

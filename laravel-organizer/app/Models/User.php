@@ -54,7 +54,4 @@ class User extends Authenticatable
         return $this->belongsToMany(Proker::class, 'groups', 'user_id', 'proker_id');
     }
 
-    public function isLeaderOfGroups($id){
-        return $this->proker()->where('is_leader', true)->where('user_id', $id)->exists();
-    }
 }

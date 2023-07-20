@@ -28,18 +28,23 @@ class PostingController extends Controller
         $proker = Proker::all();
         $Proker  = $proker->find($id);
         
-        
         if($Proker->status != trim('berjalan')){
             return view('prokertidakberjalan');
         }
+        
+        $sessionId = Auth::user()->id;
+        $roles_user = Auth::user()->role_id;
 
-        $postingans = DB::table('post')->select('*', 'users.email')->where('proker_id', $id)->join('users', 'user_id', '=', 'users.id')
+        $postingans = DB::table('post')->select('*','post.id', 'users.name')
+        ->where('proker_id', $id)->join('users', 'user_id', '=', 'users.id')
         ->get();
 
         $data = [
             'option' => '',
             'proker' => $Proker,
             'postingan' => $postingans,
+            'user' => $sessionId,
+            'roles' => $roles_user
         ];
 
         return view('post.postingview', $data);

@@ -11,10 +11,12 @@
             {{-- judul program kerja --}}
             <div>
                 <x-input-label for="judul" :value="__('Judul')"></x-input-label>
-                <x-text-input type="text" class="block mt-1 w-full" name="judul"/>
+                <x-text-input type="text" class="block mt-1 w-full" name="judul" :value="old('judul')"/>
+                <x-input-error :messages="$errors->get('judul')" class="mt-2" />
                 
                 <x-input-label for="deskripsi" :value="__('Deskripsi')"></x-input-label>
-                <x-text-input type="text" class="block mt-1 w-full" name="deskripsi"/>
+                <x-text-input type="text" class="block mt-1 w-full" name="deskripsi" :value="old('deskripsi')"/>
+                <x-input-error :messages="$errors->get('deskripsi')" class="mt-2" />
                 
                 <x-primary-button class="ml-4">
                     {{ __('Buat') }}

@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('kas.view')" :active="request()->routeIs('kas.view')">
                         {{ __('Kas') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('document.view')" :active="request()->routeIs('document.view')">
+                        {{ __('Document') }}
+                    </x-nav-link>
                 </div>
             </div>
 

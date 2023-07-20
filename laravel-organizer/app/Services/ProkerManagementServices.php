@@ -17,7 +17,7 @@ class ProkerManagementServices{
     }
 
     public function update($request){
-        $inputs = $request->only(['Proker_name, status, deskripsi']);
+        $inputs = $request->only(['Proker_name','status', 'deskripsi']);
         $proker = Proker::where('id', $request->id)->update($inputs);
         return $proker;
     }

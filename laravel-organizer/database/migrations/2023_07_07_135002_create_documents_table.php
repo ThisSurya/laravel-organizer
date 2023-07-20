@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('files', function (Blueprint $table) {
+        Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->string('nama_file');
+            $table->foreignId('proker_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->timestamps();
+
         });
     }
 

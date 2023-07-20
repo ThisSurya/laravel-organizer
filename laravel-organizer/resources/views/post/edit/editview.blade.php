@@ -12,6 +12,7 @@
             <div>
                 <x-input-label for="judul" :value="__('judul')"></x-input-label>
                 <x-text-input type="text" class="block mt-1 w-full" name="judul" value="{{ $postingan->judul }}"/>
+                <x-input-error :messages="$errors->get('Proker_name')" class="mt-2" />
 
                 <x-input-label for="deskripsi" :value="__('Deskripsi')"></x-input-label>
                 <x-text-input type="text" class="block mt-1 w-full" name="deskripsi" value="{{ $postingan->deskripsi }}"/>
