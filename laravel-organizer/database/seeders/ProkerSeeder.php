@@ -15,7 +15,7 @@ class ProkerSeeder extends Seeder
     {
         DB::table('prokers') -> insert([
             [
-                'Proker_name' => 'Bewan sama rektor',
+                'Proker_name' => 'Mangan sate',
                 'status' => 'berjalan'
             ]
             ]);

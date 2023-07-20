@@ -20,6 +20,9 @@ class RoleSeeder extends Seeder
         [
             'Roles' => 'anggota'
         ],
+        [
+            'Roles' => 'bendahara'
+        ],
         ]);
     }
 }
