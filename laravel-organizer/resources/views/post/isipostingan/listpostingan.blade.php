@@ -10,9 +10,11 @@
                 <button>Tambah</button>
             </x-slot>
             <x-slot name="content">
-                <a href="{{ route('posting.addView', $proker->id) }}" style="width: 50%;"> Add </a>
+                <a href="{{ route('posting.addView', $proker->id) }}" style="width: 50%;"> Add post</a>
                 <br>
-                <a href="{{ route('posting.addMemberView', $proker->id) }}"> Anggota </a>
+                @if ($userRole == 1)
+                    <a href="{{ route('posting.addMemberView', $proker->id) }}">Add Anggota </a>
+                @endif
             </x-slot>
         </x-dropdown>
     </header>
