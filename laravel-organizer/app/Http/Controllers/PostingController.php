@@ -39,8 +39,6 @@ class PostingController extends Controller
             'option' => '',
             'proker' => $Proker,
             'postingan' => $postingans,
-            'user' => $sessionId,
-            'roles' => $roles_user
         ];
 
         return view('post.postingview', $data);

@@ -25,7 +25,6 @@
                     <div class="flex justify-between items-center">
                         <div>
                             <small class="ml-2 text-sm text-gray-600">{{ $postingans->name }}</small>
-                            <small class="ml-2 text-sm text-gray-600">{{ $postingans->name }}</small>
                         </div>
                         @if ($postingans->deskripsi)
                             @if ($postingans->user_id == Auth::user()->id)
@@ -104,7 +103,7 @@
                 <div class="flex-1">
                     <div class="flex justify-between items-center">
                         <div>
-                            <small class="ml-2 text-sm text-gray-600">{{ $postingans->email }}</small>
+                            <small class="ml-2 text-sm text-gray-600">{{ $postingans->name }}</small>
                         </div>
                         @if ($postingans->deskripsi)
                             @if ($postingans->user_id == Auth::user()->id)

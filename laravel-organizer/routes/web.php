@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/postingan/addMember/{id?}', [PostingController::class, 'addMemberView'])->name('posting.addMemberView');
     Route::get('/postingan/view/{id?}', [PostingController::class, 'index'])->name('postingview');
     Route::post('/postingan/update', [PostingController::class, 'update'])->name('posting.update');
-    Route::get('/postingan/editView/', [PostingController::class, 'editView'])->name('posting.editView');
+    Route::post('/postingan/editView/', [PostingController::class, 'editView'])->name('posting.editView');
     Route::delete('/postingan/delete', [PostingController::class, 'delete'])->name('posting.delete');
     Route::post('/postingan/store', [PostingController::class, 'store'])->name('posting.store');
     Route::post('/postingan/storeMember', [PostingController::class, 'addMember'])->name('posting.storeMember');
