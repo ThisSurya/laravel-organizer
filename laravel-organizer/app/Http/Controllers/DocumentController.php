@@ -23,7 +23,7 @@ class DocumentController extends Controller
     public function store(Request $request) : RedirectResponse
     {
         $validatedData = $request->validate([
-            'files' => 'required|file|max:2048|',
+            'files' => 'required|file|max:2048|mimes:ppt, xlsx, pdf, doc, png, jpg, docx',
             'judul' => 'required|string|max:255'
         ]);
         $file = $request->file('files')->store('public-file', 'public');
@@ -64,7 +64,6 @@ class DocumentController extends Controller
     {   
         $download = DB::table('documents')->where('id', $id)->first();
         $pathFile = $download->nama_file;
-        // dd($pathFile);
         return Storage::download($pathFile);
    }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use App\Services\PermissionManagementServices;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
@@ -20,11 +21,11 @@ class PermissionController extends Controller
         $this->sess = session();
     }
 
-    public function index() : View
+    public function index() : View|RedirectResponse
     {
         $check = Auth::user()->role_id;
         if($check != 1){
-            return view('dashboard');
+            return redirect('/prokerview');
         }
         $user = DB::table('users')
         ->select('*', 'users.id', 'roles.Roles')->join('roles', 'roles.id', '=', 'role_id')->get();
@@ -37,14 +38,14 @@ class PermissionController extends Controller
         return view('permission.permissionView', $data);
     }
 
-    public function addview() : View
+    public function addview() : View|RedirectResponse
     {
         $user = User::all();
         $role = Role::all();
 
         $check = Auth::user()->role_id;
         if($check != 1){
-            dd($check);
+            return redirect('/prokerview');
         }
 
         $data = [
@@ -58,9 +59,6 @@ class PermissionController extends Controller
 
     public function change(Request $request){
         $check = Auth::user()->role_id;
-        if($check != 1){
-            dd($check);
-        }
         try{
             $result = $this->permissionManagementServices->update($request);
             $this->sess->flash('change', 'Role member berhasil diubah');

@@ -31,7 +31,8 @@ class ProkerController extends Controller
         $sessionId = Auth::user()->id;
         // 1 adalah role untuk ketua
         if($roles_user != 1){
-            $proker = User::findOrFail($sessionId)->prokers()->wherePivot('user_id', $sessionId)->get(); 
+            $proker = User::findOrFail($sessionId)->prokers()
+            ->wherePivot('user_id', $sessionId)->get(); 
         }
 
         $data['option'] = '';

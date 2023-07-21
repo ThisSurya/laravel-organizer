@@ -20,11 +20,11 @@ class KasController extends Controller
         $this->sess = session();
     }
 
-    public function index() : View
+    public function index() : View|RedirectResponse
     {
         $check = Auth::user()->role_id;
-        if($check != 3 || $check != 1){
-            return view('dashboard');
+        if( $check == 2) {
+            return redirect('/prokerview');
         }
 
         $data['balance'] = Kas::findOrFail(1);
@@ -33,11 +33,11 @@ class KasController extends Controller
         return view('kas.kasView', $data);
     }
 
-    public function create($jenis) : View
+    public function create($jenis) : View|RedirectResponse
     {
         $check = Auth::user()->role_id;
-        if($check != 3 || $check != 1){
-            return view('dashboard');
+        if( $check == 2) {
+            return redirect('/prokerview');
         }
         $data['jenis'] = $jenis;
 
