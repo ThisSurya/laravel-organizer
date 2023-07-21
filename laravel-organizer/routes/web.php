@@ -27,7 +27,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/documentView', [DocumentController::class, 'View'])->name('document.view');
+
 
 // Proker
 
@@ -57,9 +57,9 @@ Route::middleware('auth')->group(function () {
 
 //File
 
-
+Route::get('/documentView', [DocumentController::class, 'View'])->name('file.view');
 Route::middleware('auth')->group(function () {
-    Route::get('/addFilesView', [DocumentController::class, 'index'])->name('file.formview');
+    Route::get('addFiles', [DocumentCOntroller::class, 'addView'])->name('file.addView');
     Route::get('/downloadFiles/{id?}', [DocumentController::class, 'download'])->name('file.download');
     Route::post('/storeFiles', [DocumentController::class, 'store'])->name('file.formUpload');
     Route::delete('/deleteFiles', [DocumentController::class, 'delete'])->name('file.delete');

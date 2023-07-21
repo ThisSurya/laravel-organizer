@@ -6,6 +6,12 @@
         </h2>
     </header>
 
+    @if( Session::get('tambah'))
+        <div class="alert alert-success">
+            {{ Session::get('tambah') }}
+        </div>
+    @endif
+
     <form action="{{ route('proker.store') }}" method="POST">
         @csrf
         {{-- judul program kerja --}}

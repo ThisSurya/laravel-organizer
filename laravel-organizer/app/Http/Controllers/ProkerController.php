@@ -14,8 +14,10 @@ use Illuminate\View\View;
 class ProkerController extends Controller
 {
     var $prokerManagementServices;
+    var $sess;
     public function __construct(ProkerManagementServices $prokermanagementservices){
         $this->prokerManagementServices = $prokermanagementservices;
+        $this->sess = session();
     }
 
     public function index() : View
@@ -52,8 +54,8 @@ class ProkerController extends Controller
         ]);
         try{
             $data = $this->prokerManagementServices->store($request);
-
-            return redirect('/dashboard');
+            $this->sess->flash('tambah', 'penambahan proker berhasil!!!');
+            return redirect('/prokerview');
         }catch (\Exception $e) {
             echo "<br>";
             echo "<br>";
@@ -73,8 +75,8 @@ class ProkerController extends Controller
 
         try{
             $data = $this->prokerManagementServices->update($request);
-
-            return redirect('/dashboard');
+            $this->sess->flash('edit', 'edit proker berhasil');
+            return redirect('/prokerview');
         }catch (\Exception $e) {
             echo "<br>";
             echo "<br>";
@@ -97,6 +99,7 @@ class ProkerController extends Controller
     {
         try{
             $data = $this->prokerManagementServices->delete($id);
+            $this->sess->flash('hapus', 'hapus proker berhasil!!!');
         }catch (\Exception $e) {
             echo "<br>";
             echo "<br>";
@@ -104,7 +107,7 @@ class ProkerController extends Controller
             echo "<br>";
             echo "error".$e->getMessage();
         }
-        return redirect('prokerview');
+        return redirect('/prokerview');
     }
 
     public function done(Request $request) : RedirectResponse
@@ -112,7 +115,8 @@ class ProkerController extends Controller
         // change status into selesai
         try{
             $result = $this->prokerManagementServices->updateStatus($request);
-        }catch(Exception $e){
+            $this->sess->flash('status', 'Harap hubungi administrator untuk mengembalikkanya');
+        }catch(\Exception $e){
             echo "<br>";
             echo "<br>";
             echo "<br>";

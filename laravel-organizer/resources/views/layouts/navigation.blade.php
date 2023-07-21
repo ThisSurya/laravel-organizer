@@ -21,7 +21,7 @@
                     <x-nav-link :href="route('kas.view')" :active="request()->routeIs('kas.view')">
                         {{ __('Kas') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('document.view')" :active="request()->routeIs('document.view')">
+                    <x-nav-link :href="route('file.view')" :active="request()->routeIs('file.view')">
                         {{ __('Document') }}
                     </x-nav-link>
                     <x-nav-link :href="route('role.view')" :active="request()->routeIs('role.view')">
@@ -109,7 +109,7 @@
                 <x-responsive-nav-link :href="route('kas.view')">
                     {{ __('Kas') }}
                 </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('document.view')">
+                <x-responsive-nav-link :href="route('file.view')">
                     {{ __('Document') }}
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('role.view')">

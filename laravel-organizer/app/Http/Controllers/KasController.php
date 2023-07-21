@@ -14,16 +14,19 @@ use App\Services\Kas\KasManagementServices;
 class KasController extends Controller
 {
     var $kasManagementServices;
+    var $sess;
     public function __construct(KasManagementServices $kasmanagementservices){
         $this->kasManagementServices = $kasmanagementservices;
+        $this->sess = session();
     }
 
     public function index() : View
     {
         $check = Auth::user()->role_id;
-        if($check != 3){
+        if($check != 3 || $check != 1){
             return view('dashboard');
         }
+
         $data['balance'] = Kas::findOrFail(1);
         $data['catatan'] = CatatanKas::All();
 
@@ -33,7 +36,7 @@ class KasController extends Controller
     public function create($jenis) : View
     {
         $check = Auth::user()->role_id;
-        if($check != 3){
+        if($check != 3 || $check != 1){
             return view('dashboard');
         }
         $data['jenis'] = $jenis;
@@ -51,9 +54,11 @@ class KasController extends Controller
         try{
             if($request->jenis == "pendapatan"){
                 $this->kasManagementServices->tambahKas($request);
+                $this->sess->flash('laporan', 'laporan berhasil ditambahkan');
             }
             else {
                 $this->kasManagementServices->kurangiKas($request);
+                $this->sess->flash('laporan', 'laporan berhasil ditambahkan');
             }
             $data = $this->kasManagementServices->store($request);
 

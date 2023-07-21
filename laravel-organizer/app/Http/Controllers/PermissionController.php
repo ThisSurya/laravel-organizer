@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Auth;
 class PermissionController extends Controller
 {
     var $permissionManagementServices;
+    var $sess;
 
     public function __construct(PermissionManagementServices $permissionManagementServices){
         $this->permissionManagementServices = $permissionManagementServices;
+        $this->sess = session();
     }
 
     public function index() : View
@@ -61,6 +63,7 @@ class PermissionController extends Controller
         }
         try{
             $result = $this->permissionManagementServices->update($request);
+            $this->sess->flash('change', 'Role member berhasil diubah');
         }catch(\Exception $e){
             echo "<br>";
             echo "<br>";

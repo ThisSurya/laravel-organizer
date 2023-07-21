@@ -19,9 +19,11 @@ class PostingController extends Controller
 {
     var $postingManagementServices;
     var $memberManagementServices;
+    var $sess;
     public function __construct(PostingManagementServices $postingManagementServices, MemberManagementServices $memberManagementServices){
         $this->postingManagementServices = $postingManagementServices;
         $this->memberManagementServices = $memberManagementServices;
+        $this->sess = session();
     }
     public function index($id) : View
     {
@@ -99,6 +101,7 @@ class PostingController extends Controller
 
         try{
             $data = $this->postingManagementServices->store($request);
+            $this->sess->flash('tambah', 'tambah postinganmu berhasil');
         }catch (\Exception $e) {
             echo "<br>";
             echo "<br>";
@@ -118,6 +121,7 @@ class PostingController extends Controller
         $myroute = '/postingan/view/'.$request->proker_id;
         try{
             $check = $this->postingManagementServices->update($request);
+            $this->sess->flash('edit', 'berhasil mengubah!');
         }catch(\Exception $e){
             echo "<br>";
             echo "<br>";
@@ -133,6 +137,7 @@ class PostingController extends Controller
         $myroute = '/postingan/view/'.$request->proker_id;
         try{
             $check = $this->postingManagementServices->delete($request);
+            $this->sess->flash('hapus', 'psotingan telah berhasil dihapus');
         }catch(\Exception $e){
             echo "<br>";
             echo "<br>";
@@ -169,7 +174,7 @@ class PostingController extends Controller
         $myroute = '/postingan/view/'.$request->proker_id;
         try{
             $result = $this->memberManagementServices->destroy($request);
-            
+            $this->sess->flash('kick', 'member berhasil diusir :D');
         }catch(\Exception $e){
             echo "<br>";
             echo "<br>";
@@ -188,6 +193,7 @@ class PostingController extends Controller
             $myroute = '/postingan/view/'.$request->proker_id;
         try{
             $result = $this->memberManagementServices->store($request);
+            $this->sess->flash('tambah_member', 'Anggota baru ditambahkan');
         }catch(\Exception $e){
             echo "<br>";
             echo "<br>";
@@ -204,6 +210,7 @@ class PostingController extends Controller
         $myroute = '/postingan/view/'.$request->proker_id;
         try{
             $result = $this->postingManagementServices->updateStatus($request);
+            $this->sess->flash('status', 'Hehe beban kita berkurang satu nih');
         }catch(\Exception $e){
             echo "<br>";
             echo "<br>";

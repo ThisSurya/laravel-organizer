@@ -7,6 +7,12 @@
         <a href="{{ route('kas.create', ['jenis' => 'pengeluaran']) }}"> Catat Pengeluaran </a>
     </x-slot>
 
+    @if (Session::get('laporan'))
+        <div>
+            {{ Session::get('laporan') }}
+        </div>
+    @endif
+
     <div class="py-12">
         <div class="max-w-7xl">
             <div class="p-4">

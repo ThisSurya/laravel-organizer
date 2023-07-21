@@ -1,10 +1,9 @@
-<x-app-layout>
-    <x-slot name="header">
+<section>
+    <header>
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Berkas') }}
+            {{  __('Document:') }}
         </h2>
-        <a href="{{ route('file.formview') }}">Upload</a>
-    </x-slot>
+    </header>
 
     <div class="py-12">
         <div class="max-w-7xl">
@@ -23,4 +22,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</section>
