@@ -6,7 +6,7 @@
     ">
     <section
         class="w-3/4 left-0 top-0 p-6 mx-auto my-auto bg-white shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-3xl shadow-md">
-        <h1 class="text-xl font-bold capitalize float-left">Buat Proker Baru</h1>
+        <h1 class="text-xl font-bold capitalize float-left">Tambah Proker Baru</h1>
         <div class="float-right cursor-pointer" onclick="pler()">
             <svg xmlns="http://www.w3.org/2000/svg" height="1.5em" viewBox="0 0 384 512">
                 <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
