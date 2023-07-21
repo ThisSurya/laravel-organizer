@@ -27,7 +27,7 @@ class MemberManagementServices{
         $memberIds = $proker->users()->pluck('users.id');
 
         $nonMembers = User::whereNotIn('id', $memberIds)->get();
-    
+
         return $nonMembers;
     }
 

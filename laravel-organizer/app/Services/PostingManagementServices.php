@@ -10,7 +10,8 @@ class PostingManagementServices{
         $posting = Post::create([
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'proker_id' => $request->proker_id
+            'proker_id' => $request->proker_id,
+            'user_id' => $request->user_id
         ]);
         return $posting;
    }
@@ -19,10 +20,15 @@ class PostingManagementServices{
         $inputs = $request->only(['judul','deskripsi']);
         $posting = Post::where('id', $request->postingan_id)->update($inputs);
         return $posting;
-}
+    }
 
     public function delete($request){
         $posting = Post::where('id',$request->posting_id)->delete();
         return $posting;
-}
+    }
+
+    public function updateStatus($request){
+        $posting = Post::where('id', $request->posting_id)->update(['status' => $request->status_done]);
+        return $posting;
+    }
 }

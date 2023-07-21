@@ -18,7 +18,7 @@
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="/assets/js/popup.js"></script>
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/css/nucleo-icons.css', 'resources/css/nucleo-svg.css', 'resources/css/argon-dashboard-tailwind.css', 'resources/js/plugins/chartjs.min.js', 'resources/js/plugins/perfect-scrollbar.min.js', 'resources/js/argon-dashboard-tailwind.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/css/nucleo-icons.css', 'resources/css/nucleo-svg.css', 'resources/css/argon-dashboard-tailwind.css', 'resources/js/plugins/chartjs.min.js', 'resources/js/plugins/perfect-scrollbar.min.js', 'resources/js/argon-dashboard-tailwind.js'])
 </head>
 
 <body

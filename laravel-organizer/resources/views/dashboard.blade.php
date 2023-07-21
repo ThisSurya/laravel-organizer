@@ -1,17 +1,6 @@
 <x-app-layout>
     @include('dashboard.popup')
 
-    <!-- cards -->
-    <div class="w-full px-6 py-6 mx-auto">
-        {{-- experiment --}}
-        <div class="text-black w-full mx-auto bg-red-500">
-            <button id="proker" onclick="pler()">Buka PopUp Proker</button>
-            <button id="catatan-kas">
-            </button>
-        </div>
-        {{-- end experiment --}}
-    </div>
-
     <div class="w-full px-6 py-6 mx-auto">
 
         <!-- row 1 -->

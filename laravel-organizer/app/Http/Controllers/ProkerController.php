@@ -23,16 +23,18 @@ class ProkerController extends Controller
         $roles_user = Auth::user()->role_id;
 
         $proker = Proker::all();
+
+        $find = $proker;
+
         $sessionId = Auth::user()->id;
         // 1 adalah role untuk ketua
         if($roles_user != 1){
-            $result = User::findOrFail($sessionId)->prokers()->wherePivot('user_id', $sessionId)->get();  
-            $proker = $result;
+            $proker = User::findOrFail($sessionId)->prokers()->wherePivot('user_id', $sessionId)->get(); 
         }
-        
+
         $data['option'] = '';
         $data['proker'] = $proker;
-        $data['userId'] = $roles_user;
+        $data['userRole'] = $roles_user;
         return view('proker.prokerview', $data);
     }
 
@@ -46,6 +48,7 @@ class ProkerController extends Controller
     {
         $request->validate([
             'Proker_name' => ['required', 'string', 'max:255'],
+            'deskripsi' => ['string', 'max:255'],
         ]);
         try{
             $data = $this->prokerManagementServices->store($request);
@@ -64,7 +67,8 @@ class ProkerController extends Controller
     {
         $request->validate([
             'Proker_name' => ['required', 'string', 'max:255'],
-            'user_id' => ['required']
+            'deskripsi' => ['max:255'],
+            'id' => ['required']
         ]);
 
         try{
@@ -83,7 +87,7 @@ class ProkerController extends Controller
     public function editView($id) : View
     {
         $proker = Proker::all();
-        $data['profile'] = $proker->find($id);
+        $data['proker'] = $proker->find($id);
         $data['option'] = 'edit';
 
         return view('proker.prokerview', $data);
@@ -94,6 +98,21 @@ class ProkerController extends Controller
         try{
             $data = $this->prokerManagementServices->delete($id);
         }catch (\Exception $e) {
+            echo "<br>";
+            echo "<br>";
+            echo "<br>";
+            echo "<br>";
+            echo "error".$e->getMessage();
+        }
+        return redirect('prokerview');
+    }
+
+    public function done(Request $request) : RedirectResponse
+    {
+        // change status into selesai
+        try{
+            $result = $this->prokerManagementServices->updateStatus($request);
+        }catch(Exception $e){
             echo "<br>";
             echo "<br>";
             echo "<br>";

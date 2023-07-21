@@ -24,12 +24,12 @@
                                     </div>
                                 </div>
                                 <div class="flex-auto p-4 pt-0 text-center">
-                                    <h6 class="mb-0 text-center dark:text-white">Salary</h6>
-                                    <span class="text-xs leading-tight dark:text-white dark:opacity-80">Belong
-                                        Interactive</span>
+                                    <h6 class="mb-0 text-center dark:text-white">Saldo Kas</h6>
+                                    <span class="text-xs leading-tight dark:text-white dark:opacity-80">Saldo yang
+                                        dimiliki</span>
                                     <hr
                                         class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent" />
-                                    <h5 class="mb-0 dark:text-white">+$2000</h5>
+                                    <h5 class="mb-0 dark:text-white">Rp. 2.000.000</h5>
                                 </div>
                             </div>
                         </div>
