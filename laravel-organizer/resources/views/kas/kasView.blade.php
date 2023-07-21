@@ -1,13 +1,16 @@
 <x-app-layout>
-    {{-- <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Kas') }}
-        </h2>
-        <a href="{{ route('kas.create', ['jenis' => 'pendapatan']) }}"> Catat Pendapatan </a> |
-        <a href="{{ route('kas.create', ['jenis' => 'pengeluaran']) }}"> Catat Pengeluaran </a>
-    </x-slot> --}}
-    <div class="w-full px-6 py-6 mx-auto">
+    <x-slot name="navhead">
+        <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
+            <li class="text-sm leading-normal">
+                <a class="text-white opacity-50" href="#">{{ __('Home') }}</a>
+            </li>
+            <li class="text-sm pl-2 capitalize leading-normal text-white before:float-left before:pr-2 before:text-white before:content-['/']"
+                aria-current="page">{{ __('Kas') }}</li>
+        </ol>
+        <h6 class="mb-0 font-bold text-white capitalize">{{ __('Kas') }}</h6>
+    </x-slot>
 
+    <div class="w-full px-6 py-6 mx-auto">
         <div class="flex flex-wrap -mx-3">
             <div class="max-w-full px-3 lg:w-2/3 lg:flex-none">
                 <div class="flex flex-wrap -mx-3">
@@ -29,7 +32,7 @@
                                         dimiliki</span>
                                     <hr
                                         class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent" />
-                                    <h5 class="mb-0 dark:text-white">Rp. 2.000.000</h5>
+                                    <h5 class="mb-0 dark:text-white">Rp. {{ $balance->jumlah }}</h5>
                                 </div>
                             </div>
                         </div>
@@ -52,7 +55,8 @@
                                             Masuk</span>
                                         <hr
                                             class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent" />
-                                        <h5 class="mb-0 dark:text-white">+ Rp. 700.400</h5>
+                                        <h5 class="mb-0 dark:text-white">+ Rp.
+                                            {{ number_format($pemasukan, 0, ',', '.') }}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -72,7 +76,8 @@
                                             Keluar</span>
                                         <hr
                                             class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent" />
-                                        <h5 class="mb-0 dark:text-white">- Rp. 455.000</h5>
+                                        <h5 class="mb-0 dark:text-white">- Rp.
+                                            {{ number_format($pengeluaran, 0, ',', '.') }}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -137,56 +142,50 @@
                     <div class="p-4 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
                         <div class="flex flex-wrap -mx-3">
                             <div class="flex items-center flex-none w-1/2 max-w-full px-3">
-                                <h6 class="mb-0 dark:text-white">Invoices</h6>
+                                <h6 class="mb-0 dark:text-white">Invoice</h6>
                             </div>
                             <div class="flex-none w-1/2 max-w-full px-3 text-right">
-                                <button
-                                    class="inline-block px-8 py-2 mb-0 text-xs font-bold leading-normal text-center text-blue-500 align-middle transition-all ease-in bg-transparent border border-blue-500 border-solid rounded-lg shadow-none cursor-pointer bg-150 active:opacity-85 hover:-translate-y-px tracking-tight-rem bg-x-25 hover:opacity-75">View
-                                    All</button>
+                                <a class="inline-block px-5 py-2.5 font-bold leading-normal text-center text-white align-middle transition-all bg-transparent rounded-lg cursor-pointer text-sm ease-in shadow-md bg-150 bg-gradient-to-tl from-zinc-800 to-zinc-700 dark:bg-gradient-to-tl dark:from-slate-750 dark:to-gray-850 hover:shadow-xs active:opacity-85 hover:-translate-y-px tracking-tight-rem bg-x-25"
+                                    href="{{ route('kas.create') }}"> <i class="fas fa-plus">
+                                    </i>&nbsp;&nbsp;Invoice</a>
                             </div>
                         </div>
                     </div>
                     <div class="flex-auto p-4 pb-0">
                         <ul class="flex flex-col pl-0 mb-0 rounded-lg">
-                            <li
-                                class="relative flex justify-between px-4 py-2 pl-0 mb-2 border-0 rounded-t-inherit text-inherit rounded-xl">
-                                <div class="flex items-center">
-                                    <button
-                                        class="leading-pro ease-in text-xs bg-150 w-6.5 h-6.5 p-1.2 rounded-3.5xl tracking-tight-rem bg-x-25 mr-4 mb-0 flex cursor-pointer items-center justify-center border border-solid border-red-600 border-transparent bg-transparent text-center align-middle font-bold uppercase text-red-600 transition-all hover:opacity-75"><i
-                                            class="fas fa-arrow-down text-3xs"></i></button>
-                                    <div class="flex flex-col">
-                                        <h6 class="mb-1 text-sm leading-normal dark:text-white text-slate-700">
-                                            Netflix</h6>
-                                        <span class="text-xs leading-tight dark:text-white/80">27 March 2020, at
-                                            12:30 PM</span>
+                            @foreach ($catatan as $catatan)
+                                <li
+                                    class="relative flex justify-between px-4 py-2 pl-0 mb-2 border-0 rounded-t-inherit text-inherit rounded-xl">
+                                    <div class="flex items-center">
+                                        @if ($catatan->jenis == 'pemasukan' or $catatan->jenis == 'pendapatan')
+                                            <button
+                                                class="leading-pro ease-in text-xs bg-150 w-6.5 h-6.5 p-1.2 rounded-3.5xl tracking-tight-rem bg-x-25 mr-4 mb-0 flex cursor-pointer items-center justify-center border border-solid border-emerald-500 border-transparent bg-transparent text-center align-middle font-bold uppercase text-emerald-500 transition-all hover:opacity-75"><i
+                                                    class="fas fa-arrow-up text-3xs"></i></button>
+                                        @else
+                                            <button
+                                                class="leading-pro ease-in text-xs bg-150 w-6.5 h-6.5 p-1.2 rounded-3.5xl tracking-tight-rem bg-x-25 mr-4 mb-0 flex cursor-pointer items-center justify-center border border-solid border-red-600 border-transparent bg-transparent text-center align-middle font-bold uppercase text-red-600 transition-all hover:opacity-75"><i
+                                                    class="fas fa-arrow-down text-3xs"></i></button>
+                                        @endif
+                                        <div class="flex flex-col">
+                                            <h6 class="mb-1 text-sm leading-normal dark:text-white text-slate-700">
+                                                {{ $catatan->deskripsi }}</h6>
+                                            <span
+                                                class="text-xs leading-tight dark:text-white/80">{{ $catatan->created_at }}</span>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="flex flex-col items-center justify-center">
-                                    <p
-                                        class="relative z-10 inline-block m-0 text-sm font-semibold leading-normal text-transparent bg-gradient-to-tl from-red-600 to-orange-600 bg-clip-text">
-                                        - $ 2,500</p>
-                                </div>
-                            </li>
-                            <li
-                                class="relative flex justify-between px-4 py-2 pl-0 mb-2 border-0 border-t-0 rounded-b-inherit text-inherit rounded-xl">
-                                <div class="flex items-center">
-                                    <button
-                                        class="leading-pro ease-in text-xs bg-150 w-6.5 h-6.5 p-1.2 rounded-3.5xl tracking-tight-rem bg-x-25 mr-4 mb-0 flex cursor-pointer items-center justify-center border border-solid border-emerald-500 border-transparent bg-transparent text-center align-middle font-bold uppercase text-emerald-500 transition-all hover:opacity-75"><i
-                                            class="fas fa-arrow-up text-3xs"></i></button>
-                                    <div class="flex flex-col">
-                                        <h6 class="mb-1 text-sm leading-normal dark:text-white text-slate-700">
-                                            Apple
-                                        </h6>
-                                        <span class="text-xs leading-tight dark:text-white/80">27 March 2020, at
-                                            04:30 AM</span>
+                                    <div class="flex flex-col items-center justify-center">
+                                        @if ($catatan->jenis == 'pemasukan' or $catatan->jenis == 'pendapatan')
+                                            <p
+                                                class="relative z-10 inline-block m-0 text-sm font-semibold leading-normal text-transparent bg-gradient-to-tl from-green-600 to-lime-400 bg-clip-text">
+                                                + Rp. {{ number_format($catatan->jumlah, 0, ',', '.') }}</p>
+                                        @else
+                                            <p
+                                                class="relative z-10 inline-block m-0 text-sm font-semibold leading-normal text-transparent bg-gradient-to-tl from-red-600 to-orange-600 bg-clip-text">
+                                                - Rp. {{ number_format($catatan->jumlah, 0, ',', '.') }}</p>
+                                        @endif
                                     </div>
-                                </div>
-                                <div class="flex flex-col items-center justify-center">
-                                    <p
-                                        class="relative z-10 inline-block m-0 text-sm font-semibold leading-normal text-transparent bg-gradient-to-tl from-green-600 to-lime-400 bg-clip-text">
-                                        + $ 2,000</p>
-                                </div>
-                            </li>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>

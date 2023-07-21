@@ -26,21 +26,32 @@
     <div class="min-h-screen bg-gray-100">
         @include('layouts.side-navigation')
         <main class="relative h-full max-h-screen transition-all duration-200 ease-in-out xl:ml-68 rounded-xl">
-            @include('layouts.navigation')
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+            <nav class="relative flex flex-wrap items-center justify-between px-0 py-2 mx-6 transition-all ease-in shadow-none duration-250 rounded-2xl lg:flex-nowrap lg:justify-start"
+                navbar-main navbar-scroll="false">
+                <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
+                    {{-- navlink --}}
+                    @if (isset($navhead))
+                        <nav>
+                            {{ $navhead }}
+                        </nav>
+                    @endif
+
+                    {{-- top navigation --}}
+                    @include('layouts.navigation')
+                </div>
+            </nav>
 
             <!-- Page Content -->
             {{ $slot }}
         </main>
         @include('layouts.configurator')
     </div>
+    <!-- plugin for charts  -->
+    <script src="/assets/js/plugins/chartjs.min.js" async></script>
+    <!-- plugin for scrollbar  -->
+    <script src="/assets/js/plugins/perfect-scrollbar.min.js" async></script>
+    <!-- main script file  -->
+    <script src="/assets/js/argon-dashboard-tailwind.js?v=1.0.1" async></script>
 </body>
 
 </html>

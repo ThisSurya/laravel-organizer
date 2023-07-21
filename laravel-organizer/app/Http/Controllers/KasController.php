@@ -22,15 +22,24 @@ class KasController extends Controller
     {
         $data['balance'] = Kas::findOrFail(1);
         $data['catatan'] = CatatanKas::All();
+        $data['pemasukan'] = 0;
+        $data['pengeluaran'] = 0;
+
+        foreach($data['catatan'] as $catatan){
+            if($catatan->jenis == "pemasukan" or $catatan->jenis == "pendapatan"){
+                $data['pemasukan'] += $catatan->jumlah;
+            }
+            else {
+                $data['pengeluaran'] += $catatan->jumlah;
+            }
+        }
 
         return view('kas.kasView', $data);
     }
 
-    public function create($jenis) : View
+    public function create() : View
     {
-        $data['jenis'] = $jenis;
-
-        return view('kas.create.kasCreate', $data);
+        return view('kas.create.kasCreate');
     }
 
     public function store(Request $request)
@@ -41,7 +50,7 @@ class KasController extends Controller
             'deskripsi' => ['required', 'string', 'max:255'],
         ]);
         try{
-            if($request->jenis == "pendapatan"){
+            if($request->jenis == "pemasukan"){
                 $this->kasManagementServices->tambahKas($request);
             }
             else {

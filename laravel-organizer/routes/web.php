@@ -27,7 +27,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/document', [DocumentController::class, 'View'])->name('document.view');
 
 // Proker
 
@@ -57,9 +56,9 @@ Route::middleware('auth')->group(function () {
 
 //File
 
-
+Route::get('/document', [DocumentController::class, 'View'])->name('file.view');
 Route::middleware('auth')->group(function () {
-    Route::get('/addFilesView', [DocumentController::class, 'index'])->name('file.formview');
+    Route::get('addFiles', [DocumentCOntroller::class, 'addView'])->name('file.addView');
     Route::get('/downloadFiles/{id?}', [DocumentController::class, 'download'])->name('file.download');
     Route::post('/storeFiles', [DocumentController::class, 'store'])->name('file.formUpload');
     Route::delete('/deleteFiles', [DocumentController::class, 'delete'])->name('file.delete');
@@ -68,7 +67,7 @@ Route::middleware('auth')->group(function () {
 // Kas
 Route::get('/kas', [KasController::class, 'index'])->middleware(['auth', 'verified'])->name('kas.view');
 Route::middleware('auth')->group(function () {
-    Route::get('/kas/catat/{jenis}', [KasController::class, 'create'])->name('kas.create');
+    Route::get('/kas/catat', [KasController::class, 'create'])->name('kas.create');
     Route::post('/kas/store', [KasController::class, 'store'])->name('kas.store');
 });
 // Profile

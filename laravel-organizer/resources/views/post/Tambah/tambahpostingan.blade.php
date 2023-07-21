@@ -1,24 +1,23 @@
 <section>
-    {{-- <header>
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Tambah postingan tentang {{ $proker->Proker_name }}
-        </h2>
-    </header> --}}
-    {{-- <form action="{{ route('posting.store') }}" method="POST">
-        @csrf --}}
-    {{-- judul program kerja --}}
-    {{-- <div>
-            <x-input-label for="judul" :value="__('Judul')"></x-input-label>
-            <x-text-input type="text" class="block mt-1 w-full" name="judul" />
+    <x-slot name="navhead">
+        <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
+            <li class="text-sm leading-normal">
+                <a class="text-white opacity-50" href="#">{{ __('Home') }}</a>
+            </li>
+            <li class="text-sm pl-2 leading-normal before:float-left before:pr-2 before:text-white before:content-['/']">
+                <a class="text-white opacity-50" href="{{ route('prokerview') }}">{{ __('Program Kerja') }}</a>
+            </li>
+            <li class="text-sm pl-2 leading-normal before:float-left before:pr-2 before:text-white before:content-['/']">
+                <a class="text-white opacity-50" href="{{ route('postingview', ['id' => $proker->id]) }}">
+                    {{ $proker->Proker_name }}</a>
+            </li>
+            <li class="text-sm pl-2 capitalize leading-normal text-white before:float-left before:pr-2 before:text-white before:content-['/']"
+                aria-current="page">Buat Post
+            </li>
+        </ol>
+        <h6 class="mb-0 font-bold text-white capitalize">Buat Post {{ $proker->Proker_name }}</h6>
+    </x-slot>
 
-            <x-input-label for="deskripsi" :value="__('Deskripsi')"></x-input-label>
-            <x-text-input type="text" class="block mt-1 w-full" name="deskripsi" />
-
-            <x-primary-button class="ml-4">
-                {{ __('Buat') }}
-            </x-primary-button>
-        </div> --}}
-    {{-- </form> --}}
     <div class="flex flex-wrap -mx-3">
         <div class="w-full max-w-full px-3 shrink-0 md:w-8/12 md:flex-0">
             <form action="{{ route('posting.store') }}" method="POST">

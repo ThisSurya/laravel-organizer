@@ -1,9 +1,17 @@
 <section>
-    {{-- <header>
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Edit program kerjamu!!!!') }}
-        </h2>
-    </header> --}}
+    <x-slot name="navhead">
+        <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
+            <li class="text-sm leading-normal">
+                <a class="text-white opacity-50" href="#">{{ __('Home') }}</a>
+            </li>
+            <li class="text-sm pl-2 leading-normal before:float-left before:pr-2 before:text-white before:content-['/']">
+                <a class="text-white opacity-50" href="{{ route('prokerview') }}">{{ __('Program Kerja') }}</a>
+            </li>
+            <li class="text-sm pl-2 capitalize leading-normal text-white before:float-left before:pr-2 before:text-white before:content-['/']"
+                aria-current="page">{{ __('Edit Program Kerja') }}</li>
+        </ol>
+        <h6 class="mb-0 font-bold text-white capitalize">{{ __('Edit Program Kerja') }}</h6>
+    </x-slot>
 
     <div class="flex flex-wrap -mx-3">
         <div class="w-full max-w-full px-3 shrink-0 md:w-8/12 md:flex-0">

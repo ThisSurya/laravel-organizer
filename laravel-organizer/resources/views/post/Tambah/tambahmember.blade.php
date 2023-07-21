@@ -1,16 +1,29 @@
 <section>
-    {{-- <header>
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Anggota dari: {{ $proker->Proker_name }}
-        </h2>
-    </header> --}}
+    <x-slot name="navhead">
+        <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
+            <li class="text-sm leading-normal">
+                <a class="text-white opacity-50" href="#">{{ __('Home') }}</a>
+            </li>
+            <li class="text-sm pl-2 leading-normal before:float-left before:pr-2 before:text-white before:content-['/']">
+                <a class="text-white opacity-50" href="{{ route('prokerview') }}">{{ __('Program Kerja') }}</a>
+            </li>
+            <li class="text-sm pl-2 leading-normal before:float-left before:pr-2 before:text-white before:content-['/']">
+                <a class="text-white opacity-50" href="{{ route('postingview', ['id' => $proker->id]) }}">
+                    {{ $proker->Proker_name }}</a>
+            </li>
+            <li class="text-sm pl-2 capitalize leading-normal text-white before:float-left before:pr-2 before:text-white before:content-['/']"
+                aria-current="page">Tambah Member
+            </li>
+        </ol>
+        <h6 class="mb-0 font-bold text-white capitalize">Tambah Member</h6>
+    </x-slot>
 
     <div class="flex flex-wrap -mx-3">
         <div class="flex-none w-full max-w-full px-3">
             <div
                 class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-xl dark:bg-slate-850 dark:shadow-dark-xl rounded-2xl bg-clip-border">
                 <div class="p-6 pb-0 mb-0 border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                    <h6 class="dark:text-white">Authors table</h6>
+                    <h6 class="dark:text-white">Members</h6>
                 </div>
                 <div class="flex-auto px-0 pt-0 pb-2">
                     <div class="p-0 overflow-x-auto">

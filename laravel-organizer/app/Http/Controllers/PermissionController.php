@@ -26,7 +26,7 @@ class PermissionController extends Controller
         }
         $user = DB::table('users')
         ->select('*', 'users.id', 'roles.Roles')->join('roles', 'roles.id', '=', 'role_id')->get();
-        
+
         $data = [
             'user' => $user,
             'option' => ''
@@ -37,7 +37,8 @@ class PermissionController extends Controller
 
     public function addview() : View
     {
-        $user = User::all();
+        $user = DB::table('users')
+        ->select('*', 'users.id', 'roles.Roles')->join('roles', 'roles.id', '=', 'role_id')->get();
         $role = Role::all();
 
         $check = Auth::user()->role_id;

@@ -1,26 +1,27 @@
 <section>
-    {{-- <header>
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Edit postingan
-        </h2>
-    </header>
-    <form action="{{ route('posting.update') }}" method="POST">
-        @csrf
-        <x-text-input type="hidden" name="postingan_id" value="{{ $postingan->id }}"></x-text-input>
-        <x-text-input type="hidden" name="proker_id" value="{{ $proker->id }}"></x-text-input>
-        <div>
-            <x-input-label for="judul" :value="__('judul')"></x-input-label>
-            <x-text-input type="text" class="block mt-1 w-full" name="judul" value="{{ $postingan->judul }}" />
-
-            <x-input-label for="deskripsi" :value="__('Deskripsi')"></x-input-label>
-            <x-text-input type="text" class="block mt-1 w-full" name="deskripsi"
-                value="{{ $postingan->deskripsi }}" />
-
-            <x-primary-button class="ml-4">
-                {{ __('Buat') }}
-            </x-primary-button>
-        </div>
-    </form> --}}
+    <x-slot name="navhead">
+        <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
+            <li class="text-sm leading-normal">
+                <a class="text-white opacity-50" href="#">{{ __('Home') }}</a>
+            </li>
+            <li class="text-sm pl-2 leading-normal before:float-left before:pr-2 before:text-white before:content-['/']">
+                <a class="text-white opacity-50" href="{{ route('prokerview') }}">{{ __('Program Kerja') }}</a>
+            </li>
+            <li class="text-sm pl-2 leading-normal before:float-left before:pr-2 before:text-white before:content-['/']">
+                <a class="text-white opacity-50" href="{{ route('postingview', ['id' => $proker->id]) }}">
+                    {{ $proker->Proker_name }}</a>
+            </li>
+            <li
+                class="text-sm pl-2 leading-normal before:float-left before:pr-2 before:text-white before:content-['/']">
+                <a class="text-white opacity-50" href="#">
+                    Post {{ $postingan->judul }}</a>
+            </li>
+            <li class="text-sm pl-2 capitalize leading-normal text-white before:float-left before:pr-2 before:text-white before:content-['/']"
+                aria-current="page">Edit
+            </li>
+        </ol>
+        <h6 class="mb-0 font-bold text-white capitalize">Edit {{ $postingan->judul }}</h6>
+    </x-slot>
 
     <div class="flex flex-wrap -mx-3">
         <div class="w-full max-w-full px-3 shrink-0 md:w-8/12 md:flex-0">

@@ -14,32 +14,27 @@ use Illuminate\View\View;
 class DocumentController extends Controller
 {
     var $documentManagementServices;
+    var $sess;
     public function __construct(DocumentManagementServices $documentManagementServices){
         $this->documentManagementServices = $documentManagementServices;
-    }
-
-    public function index() : View
-    {
-        return view('fileForm');
+        $this->sess = session();
     }
 
     public function store(Request $request) : RedirectResponse
     {
         $validatedData = $request->validate([
-            'files' => 'required|file|max:2048|',
+            'files' => 'required|file|max:2048|mimes:ppt, xlsx, pdf, doc, png, jpg, docx',
             'judul' => 'required|string|max:255'
         ]);
         $file = $request->file('files')->store('public-file', 'public');
 
         $validatedData['nama_file'] = $request->file('files')->store('public-file', 'public');
         $validatedData['judul'] = $request->judul;
-        
+
         try{
-            // $result = Document::create([
-            //     'nama_file' => $validatedData['nama_file'],
-            // ]);
             $result = $this->documentManagementServices->create($validatedData);
-            return back();
+            $this->sess->flash('addFile', 'File berhasil diupload');
+            return redirect('/documentView');
         }catch(\Exception $e){
             echo "<br>";
             echo "<br>";
@@ -48,21 +43,27 @@ class DocumentController extends Controller
             echo "<br>";
             echo "Error" .$e->getMessage();
         }
-       
+
     }
 
     public function View() : View
     {
         $photo = Document::all();
         $data['file'] = $photo;
-        return view('document.isidocument', $data);
+        $data['option'] = '';
+        return view('document.documentview', $data);
+    }
+
+    public function addView() : View
+    {
+        $data['option'] = 'tambah';
+        return view('document.documentview', $data);
     }
 
     public function download($id)
-    {   
+    {
         $download = DB::table('documents')->where('id', $id)->first();
         $pathFile = $download->nama_file;
-        // dd($pathFile);
         return Storage::download($pathFile);
    }
 
@@ -71,8 +72,19 @@ class DocumentController extends Controller
     $find = DB::table('documents')->where('id', $request->id)->first();
     $pathFile = $find->nama_file;
 
-    $delete = DB::table('documents')->where('id', $request->id)->delete();
-    $result = Storage::delete($pathFile);
+    try{
+        $delete = DB::table('documents')->where('id', $request->id)->delete();
+        $this->sess->flash('delete', 'File berhasil dihapus');
+        $result = Storage::delete($pathFile);
+    }catch(\Exception $e){
+        echo "<br>";
+            echo "<br>";
+            echo "<br>";
+            echo "<br>";
+            echo "<br>";
+            echo "Error" .$e->getMessage();
+    }
+
     return back();
    }
 }

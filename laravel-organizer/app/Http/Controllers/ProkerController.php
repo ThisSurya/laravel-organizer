@@ -29,7 +29,7 @@ class ProkerController extends Controller
         $sessionId = Auth::user()->id;
         // 1 adalah role untuk ketua
         if($roles_user != 1){
-            $proker = User::findOrFail($sessionId)->prokers()->wherePivot('user_id', $sessionId)->get(); 
+            $proker = User::findOrFail($sessionId)->prokers()->wherePivot('user_id', $sessionId)->get();
         }
 
         $data['option'] = '';
@@ -53,7 +53,7 @@ class ProkerController extends Controller
         try{
             $data = $this->prokerManagementServices->store($request);
 
-            return redirect('/dashboard');
+            return redirect()->route('prokerview');
         }catch (\Exception $e) {
             echo "<br>";
             echo "<br>";
@@ -74,7 +74,7 @@ class ProkerController extends Controller
         try{
             $data = $this->prokerManagementServices->update($request);
 
-            return redirect('/dashboard');
+            return redirect()->route('prokerview');
         }catch (\Exception $e) {
             echo "<br>";
             echo "<br>";
@@ -104,7 +104,7 @@ class ProkerController extends Controller
             echo "<br>";
             echo "error".$e->getMessage();
         }
-        return redirect('prokerview');
+        return redirect()->route('prokerview');
     }
 
     public function done(Request $request) : RedirectResponse
@@ -119,6 +119,6 @@ class ProkerController extends Controller
             echo "<br>";
             echo "error".$e->getMessage();
         }
-        return redirect('prokerview');
+        return redirect()->route('prokerview');
     }
 }
