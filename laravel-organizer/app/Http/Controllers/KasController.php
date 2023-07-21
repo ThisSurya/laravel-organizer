@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Kas;
 use App\Models\CatatanKas;
 use App\Services\Kas\KasManagementServices;
@@ -20,6 +20,10 @@ class KasController extends Controller
 
     public function index() : View
     {
+        $check = Auth::user()->role_id;
+        if($check != 3){
+            return view('dashboard');
+        }
         $data['balance'] = Kas::findOrFail(1);
         $data['catatan'] = CatatanKas::All();
 
@@ -28,6 +32,10 @@ class KasController extends Controller
 
     public function create($jenis) : View
     {
+        $check = Auth::user()->role_id;
+        if($check != 3){
+            return view('dashboard');
+        }
         $data['jenis'] = $jenis;
 
         return view('kas.create.kasCreate', $data);

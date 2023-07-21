@@ -10,7 +10,7 @@
         <div class="max-w-7xl">
             <div class="p-4">
                 @foreach ($file as $photos)
-                    <a href="#">{{ $photos->nama_file }}</a>
+                    <a href="{{ route('file.download', $photos->id) }}">{{ $photos->nama_file }}</a>
                     <br>
                 @endforeach
                 <p></p>

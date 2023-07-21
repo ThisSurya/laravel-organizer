@@ -5,6 +5,7 @@ use App\Http\Controllers\PostingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProkerController;
 use App\Http\Controllers\KasController;
+use App\Http\Controllers\PermissionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,10 +55,12 @@ Route::middleware('auth')->group(function () {
     Route::post('/postingan/done', [PostingController::class, 'done'])->name('post.done');
 });
 
+//File
 Route::get('/addFilesView', [DocumentController::class, 'index'])->middleware(['auth', 'verified'])->name('file.formview');
+Route::get('/downloadFiles/{id?}', [DocumentController::class, 'download'])->middleware(['auth', 'verified'])->name('file.download');
 Route::post('/storeFiles', [DocumentController::class, 'store'])->middleware(['auth', 'verified'])->name('file.formUpload');
-// Kas
 
+// Kas
 Route::get('/kas', [KasController::class, 'index'])->middleware(['auth', 'verified'])->name('kas.view');
 Route::middleware('auth')->group(function () {
     Route::get('/kas/catat/{jenis}', [KasController::class, 'create'])->name('kas.create');
@@ -71,4 +74,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+//Role
+Route::middleware('auth')->group(function () {
+    Route::get('/roleView', [PermissionController::class, 'index'])->name('role.view');
+    Route::get('/addroleview', [PermissionController::class, 'addview'])->name('role.addview');
+    Route::post('/changerole', [PermissionController::class, 'change'])->name('role.change');
+});
 require __DIR__.'/auth.php';

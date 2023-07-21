@@ -6,6 +6,9 @@ use App\Models\Document;
 use App\Services\DocumentManagementServices;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class DocumentController extends Controller
@@ -50,4 +53,14 @@ class DocumentController extends Controller
         $data['file'] = $photo;
         return view('document.isidocument', $data);
     }
+
+    public function download($id)
+    {   
+        $download = DB::table('documents')->where('id', $id)->first();
+        $pathFile = $download->nama_file;
+        // dd($pathFile);
+        return Storage::download($pathFile);
+   }
+
+   
 }

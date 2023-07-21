@@ -201,7 +201,7 @@ class PostingController extends Controller
         $myroute = '/postingan/view/'.$request->proker_id;
         try{
             $result = $this->postingManagementServices->updateStatus($request);
-        }catch(Exception $e){
+        }catch(\Exception $e){
             echo "<br>";
             echo "<br>";
             echo "<br>";

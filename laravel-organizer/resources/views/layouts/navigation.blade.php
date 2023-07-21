@@ -24,6 +24,9 @@
                     <x-nav-link :href="route('document.view')" :active="request()->routeIs('document.view')">
                         {{ __('Document') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('role.view')" :active="request()->routeIs('role.view')">
+                        {{ __('Role') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -99,6 +102,18 @@
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('prokerview')">
+                    {{ __('Proker') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('kas.view')">
+                    {{ __('Kas') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('document.view')">
+                    {{ __('Document') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('role.view')">
+                    {{ __('Role') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
