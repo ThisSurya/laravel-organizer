@@ -4,13 +4,13 @@ namespace App\Services;
 use App\Models\Document;
 
 class DocumentManagementServices{
-    public function create($image)
+    public function create($validatedData)
     {
-        dd($image);
+
         $file = Document::create([
-            'nama_file' => 'asdfcveargfzvxc',
-            'post_id' => 1
+            'nama_file' => $validatedData['nama_file'],
+            'judul' => $validatedData['judul']
         ]);
-        dd($file);
+        return $file;
     }
 }

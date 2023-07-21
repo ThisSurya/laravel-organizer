@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->string('nama_file');
-            $table->foreignId('proker_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string('judul');
             $table->timestamps();
 
         });

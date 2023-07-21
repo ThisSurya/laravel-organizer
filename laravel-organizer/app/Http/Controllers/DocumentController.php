@@ -26,15 +26,19 @@ class DocumentController extends Controller
     public function store(Request $request) : RedirectResponse
     {
         $validatedData = $request->validate([
-            'files' => 'required|file|max:2048|'
+            'files' => 'required|file|max:2048|',
+            'judul' => 'required|string|max:255'
         ]);
+        $file = $request->file('files')->store('public-file', 'public');
 
         $validatedData['nama_file'] = $request->file('files')->store('public-file', 'public');
+        $validatedData['judul'] = $request->judul;
+        
         try{
-            $result = Document::create([
-                'nama_file' => $validatedData['nama_file'],
-                'proker_id' => '1'
-            ]);
+            // $result = Document::create([
+            //     'nama_file' => $validatedData['nama_file'],
+            // ]);
+            $result = $this->documentManagementServices->create($validatedData);
             return back();
         }catch(\Exception $e){
             echo "<br>";

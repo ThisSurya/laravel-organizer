@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('Proker_name');
             $table->string('deskripsi')->nullable();
-            $table->string('status');
+            $table->string('status')->default('berjalan');
         });
     }
 
