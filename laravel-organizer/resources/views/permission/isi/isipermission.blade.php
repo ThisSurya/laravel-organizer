@@ -1,7 +1,7 @@
 <section>
     <header>
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __("Anggota mu....") }}
+            {{ __("Siapa saja yang ikut dalam organisasi ini?") }}
         </h2>
     </header>
 

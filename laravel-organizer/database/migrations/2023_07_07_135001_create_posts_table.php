@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('deskripsi')->nullable();
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('proker_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('file_id')->nullable()->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('status')->default('berjalan');
             $table->timestamps();
         });
