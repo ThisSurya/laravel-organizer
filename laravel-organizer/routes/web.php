@@ -56,9 +56,14 @@ Route::middleware('auth')->group(function () {
 });
 
 //File
-Route::get('/addFilesView', [DocumentController::class, 'index'])->middleware(['auth', 'verified'])->name('file.formview');
-Route::get('/downloadFiles/{id?}', [DocumentController::class, 'download'])->middleware(['auth', 'verified'])->name('file.download');
-Route::post('/storeFiles', [DocumentController::class, 'store'])->middleware(['auth', 'verified'])->name('file.formUpload');
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/addFilesView', [DocumentController::class, 'index'])->name('file.formview');
+    Route::get('/downloadFiles/{id?}', [DocumentController::class, 'download'])->name('file.download');
+    Route::post('/storeFiles', [DocumentController::class, 'store'])->name('file.formUpload');
+    Route::delete('/deleteFiles', [DocumentController::class, 'delete'])->name('file.delete');
+});
 
 // Kas
 Route::get('/kas', [KasController::class, 'index'])->middleware(['auth', 'verified'])->name('kas.view');

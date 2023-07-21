@@ -26,7 +26,7 @@ class DocumentController extends Controller
     public function store(Request $request) : RedirectResponse
     {
         $validatedData = $request->validate([
-            'files' => 'required|file|max:1024|'
+            'files' => 'required|file|max:2048|'
         ]);
 
         $validatedData['nama_file'] = $request->file('files')->store('public-file', 'public');
@@ -35,7 +35,7 @@ class DocumentController extends Controller
                 'nama_file' => $validatedData['nama_file'],
                 'proker_id' => '1'
             ]);
-            return redirect('/');
+            return back();
         }catch(\Exception $e){
             echo "<br>";
             echo "<br>";
@@ -62,5 +62,13 @@ class DocumentController extends Controller
         return Storage::download($pathFile);
    }
 
-   
+   public function delete(Request $request) : RedirectResponse
+   {
+    $find = DB::table('documents')->where('id', $request->id)->first();
+    $pathFile = $find->nama_file;
+
+    $delete = DB::table('documents')->where('id', $request->id)->delete();
+    $result = Storage::delete($pathFile);
+    return back();
+   }
 }
