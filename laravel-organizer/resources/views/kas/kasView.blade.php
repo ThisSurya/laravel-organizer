@@ -37,7 +37,7 @@
                                         dimiliki</span>
                                     <hr
                                         class="h-px my-4 bg-transparent bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent" />
-                                    <h5 class="mb-0 dark:text-white">Rp. {{ $balance->jumlah }}</h5>
+                                    <h5 class="mb-0 dark:text-white">Rp. {{ number_format($balance->jumlah, 0, ',', '.') }}</h5>
                                 </div>
                             </div>
                         </div>

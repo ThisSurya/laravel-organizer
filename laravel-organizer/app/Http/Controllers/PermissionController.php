@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class PermissionController extends Controller
 {
@@ -18,11 +19,12 @@ class PermissionController extends Controller
         $this->permissionManagementServices = $permissionManagementServices;
     }
 
-    public function index() : View
+    public function index() : View|RedirectResponse
     {
         $check = Auth::user()->role_id;
+        
         if($check != 1){
-            return view('dashboard');
+            return redirect()->route('prokerview');
         }
         $user = DB::table('users')
         ->select('*', 'users.id', 'roles.Roles')->join('roles', 'roles.id', '=', 'role_id')->get();
@@ -35,15 +37,16 @@ class PermissionController extends Controller
         return view('permission.permissionView', $data);
     }
 
-    public function addview() : View
+    public function addview() : View|RedirectResponse
     {
         $user = DB::table('users')
         ->select('*', 'users.id', 'roles.Roles')->join('roles', 'roles.id', '=', 'role_id')->get();
         $role = Role::all();
 
         $check = Auth::user()->role_id;
+        
         if($check != 1){
-            dd($check);
+            return redirect()->route('prokerview');
         }
 
         $data = [

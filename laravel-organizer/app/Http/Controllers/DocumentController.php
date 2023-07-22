@@ -23,7 +23,7 @@ class DocumentController extends Controller
     public function store(Request $request) : RedirectResponse
     {
         $validatedData = $request->validate([
-            'files' => 'required|file|max:2048|mimes:ppt, xlsx, pdf, doc, png, jpg, docx',
+            'files' => 'required|file|max:2048',
             'judul' => 'required|string|max:255'
         ]);
         $file = $request->file('files')->store('public-file', 'public');
@@ -34,7 +34,7 @@ class DocumentController extends Controller
         try{
             $result = $this->documentManagementServices->create($validatedData);
             $this->sess->flash('addFile', 'File berhasil diupload');
-            return redirect('/documentView');
+            return redirect('/document');
         }catch(\Exception $e){
             echo "<br>";
             echo "<br>";

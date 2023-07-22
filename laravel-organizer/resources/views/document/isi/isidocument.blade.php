@@ -55,7 +55,7 @@
                                                         alt="spotify" />
                                                 </div> --}}
                                                 <div class="my-auto">
-                                                    <a href="{{ route('file.download', $file->id) }}">{{ $file->judul }}
+                                                    <a href="{{ route('file.download', $file->id) }}">
 
                                                         <h6 class="mb-0 text-sm leading-normal dark:text-white">
                                                             {{ $file->judul }}
@@ -75,7 +75,7 @@
                                             <form action="{{ route('file.delete') }}" method="POST">
                                                 @csrf
                                                 @method('delete')
-                                                <input type="hidden" name="id" value="{{ $photos->id }}">
+                                                <input type="hidden" name="id" value="{{ $file->id }}">
                                                 <input type="submit" value="hapus">
                                             </form>
                                         </td>

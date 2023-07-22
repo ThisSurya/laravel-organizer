@@ -25,11 +25,18 @@ class PostingController extends Controller
         $this->memberManagementServices = $memberManagementServices;
         $this->sess = session();
     }
-    public function index($id) : View
+    public function index($id) : View|RedirectResponse
     {
         $proker = Proker::all();
         $Proker  = $proker->find($id);
         $roles_user = Auth::user()->role_id;
+        $sessionId = Auth::user()->id;
+
+        $group = Proker::findOrFail($id)->users()->wherePivot('user_id', $sessionId)->get();
+
+        if(count($group) < 1){
+            return redirect()->route('prokerview');
+        }
 
         if($Proker->status != trim('berjalan')){
             return view('prokertidakberjalan');
@@ -74,7 +81,8 @@ class PostingController extends Controller
         return view('post.postingview', $data);
     }
 
-    public function editView(Request $request){
+    public function editView(Request $request) : View|RedirectResponse
+    {
 
         $proker = Proker::all();
         $Proker  = $proker->find($request->proker_id);

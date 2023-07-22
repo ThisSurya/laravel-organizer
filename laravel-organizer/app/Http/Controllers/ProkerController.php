@@ -38,8 +38,12 @@ class ProkerController extends Controller
         return view('proker.prokerview', $data);
     }
 
-    public function addView() : View
+    public function addView() : View|RedirectResponse
     {
+        $roles_user = Auth::user()->role_id;
+        if($roles_user != 1){
+            return redirect()->route('prokerview');
+        }
         $data['option'] = 'tambah';
         return view('proker.prokerview', $data);
     }
@@ -84,11 +88,15 @@ class ProkerController extends Controller
         }
     }
 
-    public function editView($id) : View
+    public function editView($id) : View|RedirectResponse
     {
         $proker = Proker::all();
         $data['proker'] = $proker->find($id);
         $data['option'] = 'edit';
+        $roles_user = Auth::user()->role_id;
+        if($roles_user != 1){
+            return redirect()->route('prokerview');
+        }
 
         return view('proker.prokerview', $data);
     }
