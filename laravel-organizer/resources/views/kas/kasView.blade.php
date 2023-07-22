@@ -10,6 +10,11 @@
         <h6 class="mb-0 font-bold text-white capitalize">{{ __('Kas') }}</h6>
     </x-slot>
 
+    @if (Session::get('laporan'))
+        <div>
+            {{ Session::get('laporan') }}
+        </div>
+    @endif
     <div class="w-full px-6 py-6 mx-auto">
         <div class="flex flex-wrap -mx-3">
             <div class="max-w-full px-3 lg:w-2/3 lg:flex-none">

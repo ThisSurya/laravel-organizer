@@ -69,7 +69,7 @@
 
                                                     </div>
                                                 </div>
-                                                <div class=" inline-block px-3 text-right space-y-4">
+                                                <div class="px-3 text-right basis-1/3 space-y-4">
                                                     {{-- <div
                                                         class="grid place-items-center w-12 h-12 text-center rounded-circle bg-gradient-to-tl from-blue-500 to-violet-500">
                                                         <i class="fa-regular fa-eye fa-lg"
