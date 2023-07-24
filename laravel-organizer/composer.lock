@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "be6921d94c098b95fb68de6a15478940",
+    "content-hash": "c3e9801689d5e753c4f4a934e24a1924",
     "packages": [
         {
             "name": "backpack/basset",
@@ -171,6 +171,66 @@
                 "source": "https://github.com/Laravel-Backpack/CRUD/tree/6.0.6"
             },
             "time": "2023-07-18T10:24:07+00:00"
+        },
+        {
+            "name": "backpack/theme-coreuiv2",
+            "version": "1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Laravel-Backpack/theme-coreuiv2.git",
+                "reference": "68b8cd1bd01fa423df440bba071bcacbb05ae1d3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Laravel-Backpack/theme-coreuiv2/zipball/68b8cd1bd01fa423df440bba071bcacbb05ae1d3",
+                "reference": "68b8cd1bd01fa423df440bba071bcacbb05ae1d3",
+                "shasum": ""
+            },
+            "require": {
+                "backpack/crud": "^6.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~5|~6",
+                "phpunit/phpunit": "~9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Backpack\\ThemeCoreuiv2\\AddonServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Backpack\\ThemeCoreuiv2\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cristian Tabacitu",
+                    "email": "hello@backpackforlaravel.com",
+                    "homepage": "https://backpackforlaravel.com"
+                }
+            ],
+            "description": "UI that uses CoreUI v2 and Bootstrap v4, provided as a legacy theme for Backpack v6.",
+            "homepage": "https://github.com/backpack/theme-coreuiv2",
+            "keywords": [
+                "Backpack Addon",
+                "Backpack for Laravel",
+                "ThemeCoreuiv2",
+                "backpack",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/Laravel-Backpack/theme-coreuiv2/issues",
+                "source": "https://github.com/Laravel-Backpack/theme-coreuiv2/tree/1.1.4"
+            },
+            "time": "2023-07-20T14:31:47+00:00"
         },
         {
             "name": "backpack/theme-coreuiv4",

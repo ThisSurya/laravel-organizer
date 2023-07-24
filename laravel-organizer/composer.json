@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.1",
         "backpack/crud": "^6.0",
+        "backpack/theme-coreuiv2": "*",
         "backpack/theme-coreuiv4": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/breeze": "^1.21",
